@@ -1,0 +1,175 @@
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: Lato, sans-serif;
+    font-size: 2.0rem;
+    color: #ffffff;
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    width: 100%;
+    padding: 5px;
+}
+  
+.articles-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 30px;
+}
+
+.articles-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    transition: transform 0.5s ease-in-out;
+    width: 100%; /* Adjust width to fit all articles */
+}
+
+.frontpage-article {
+    flex: 0 0 23%; /* Each article takes up 1/4th of the container */
+    max-width: calc(25% - 20px); /* Ensure articles don't exceed 25% width */
+    margin: 2% 1% 1% 1%;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: #4e4e4e;
+    color: #ffffff;
+    border-radius: 2px;
+    border-color: rgb(66, 66, 66);
+    border-width: 1px;
+    border-style: solid;
+    }
+
+.article-preview-content {
+    padding: 0px 0; /* Add spacing inside the content block */
+    margin-top: 10px; /* Add spacing above the content block */
+    border-top: 1px solid #444; /* Optional: Add a subtle divider above the content */
+}
+
+
+.article-preview-image.container {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.article-preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-top: 10px;
+}
+
+.article-preview-title {
+    font-family: Merriweather, sans-serif;
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-top: 10px;
+    margin-left: 8px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-align: left;
+    padding: 0px 0; /* Add spacing inside the content block */
+}
+
+.article-preview-author-date {
+    display: flex;
+    justify-content: space-between; /* Align author to the left and date to the right */
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 2px; /* Add spacing below this section */
+}
+
+.article-preview-author {
+    font-family: Merriweather, sans-serif;
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+}
+
+.article-preview-date {
+    font-family: Lato, sans-serif;
+    font-size: 1.1rem;
+    color: #929292;
+    font-weight: normal;
+    letter-spacing: 0.02em;
+}
+
+.article-preview-info-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px; /* Add spacing between grid items */
+    justify-content: space-between;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    padding: 0 2px;
+}
+
+.article-preview-info-container p {
+    margin: 0; /* Remove default margins */
+    white-space: nowrap; /* Prevent text from breaking into multiple lines */
+    font-size: 0.8rem; /* Adjust font size for better fit */
+}
+
+.article-preview-comments {
+    color: #929292;
+    margin-top: 2px;
+    margin-bottom: 5px; /* Add spacing below comments */
+}
+
+.article-preview-mentions {
+    color: #929292;
+    margin-top: 2px;
+    margin-bottom: 5px; /* Add spacing below comments */
+}
+
+
+.article-preview-rating {
+    color: #929292;
+    margin-top: 2px;
+    margin-bottom: 5px; /* Add spacing below comments */
+}
+
+.article-preview-evalProfile {
+    color: #929292;
+    margin-top: 2px;
+    margin-bottom: 5px; /* Add spacing below comments */
+}
+
+.article-preview-text {
+    font-family: Merriweather, sans-serif;
+    font-size: 1rem;
+    color: #ffffff;
+    line-height: 1.5;
+}
+
+
+.nav-button {
+    background-color: #252525;
+    opacity: 0.8;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.nav-button.left {
+    margin-right: 10px;
+}
+
+.nav-button.right {
+    margin-left: 10px;
+}

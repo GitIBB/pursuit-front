@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="153.03987mm"
+   height="158.87054mm"
+   viewBox="0 0 153.03987 158.87054"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="Profile Icon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showguides="true"
+     inkscape:zoom="0.36302259"
+     inkscape:cx="1024.7296"
+     inkscape:cy="648.71996"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="2552"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <filter
+       id="mask-powermask-path-effect21_inverse"
+       inkscape:label="filtermask-powermask-path-effect21"
+       style="color-interpolation-filters:sRGB"
+       height="100"
+       width="100"
+       x="-50"
+       y="-50">
+      <feColorMatrix
+         id="mask-powermask-path-effect21_primitive1"
+         values="1"
+         type="saturate"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         id="mask-powermask-path-effect21_primitive2"
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0 "
+         in="fbSourceGraphic" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-29.889879,-26.974543)">
+    <path
+       id="path2"
+       style="display:inline;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.96445;stroke-opacity:1"
+       d="M 148.39841 170.19267 A 42.032681 42.032681 0 0 0 106.40976 129.94604 A 42.032681 42.032681 0 0 0 64.511022 170.10999 A 71.986778 71.986786 0 0 0 106.51001 183.84352 A 71.986778 71.986786 0 0 0 148.39841 170.19267 z " />
+    <path
+       id="path21"
+       style="display:inline;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.96445;stroke-opacity:1"
+       d="M 106.40976 70.558963 A 24.840803 24.840803 0 0 0 81.568895 95.399824 A 24.840803 24.840803 0 0 0 106.40976 120.24068 A 24.840803 24.840803 0 0 0 131.25062 95.399824 A 24.840803 24.840803 0 0 0 106.40976 70.558963 z " />
+    <path
+       id="path22"
+       style="display:inline;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3.96445;stroke-opacity:1"
+       d="M 106.51001 39.86988 A 71.986778 71.986786 0 0 0 34.523188 111.8567 A 71.986778 71.986786 0 0 0 64.511022 170.10999 A 42.032681 42.032681 0 0 1 106.40976 129.94604 A 42.032681 42.032681 0 0 1 148.39841 170.19267 A 71.986778 71.986786 0 0 0 178.49683 111.8567 A 71.986778 71.986786 0 0 0 106.51001 39.86988 z M 106.40976 70.558963 A 24.840803 24.840803 0 0 1 131.25062 95.399824 A 24.840803 24.840803 0 0 1 106.40976 120.24068 A 24.840803 24.840803 0 0 1 81.568895 95.399824 A 24.840803 24.840803 0 0 1 106.40976 70.558963 z " />
+  </g>
+</svg>

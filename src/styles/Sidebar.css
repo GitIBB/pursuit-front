@@ -1,0 +1,96 @@
+/* Hamburger Icon */
+.hamburger-icon {
+    position: fixed;
+    top: 90px; /* Position it at the top of the navbar */
+    right: 30px; /* Align it to the right */
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1300; /* Ensure it is above the sidebar and navbar */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40px;
+    height: 25px;
+}
+
+.hamburger-icon .bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #ffffff; /* Adjust color as needed */
+    transition: all 0.3s ease;
+}
+
+.sidebar {
+    display: flex; 
+    flex-direction: column; 
+    background-color: #303030; 
+    height: calc(100vh - 140px); /* Adjust height to fit below the header */
+    width: 150px; /* Set a fixed width for the sidebar */
+    position: fixed; /* Fix the sidebar to the left side of the screen */
+    top: 140px; /* Start below the header */
+    right: 0; /* Align to the left edge of the screen */
+    z-index: 998; /* Higher than the gray line */
+    transform: translateX(0); /* Default position */
+    border-left: 10px solid #faedcd;
+    border-top: none;
+    border-bottom: none;
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    background-color: #303030;
+    padding: 20px;
+}
+
+.sidebar-text {
+    font-family: Lato, sans-serif;
+    font-size: 1.2em;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+/* Decorative toggle-sidebar-button */
+.toggle-sidebar-button {
+    position: fixed;
+    top: 140px; /* Align it below the header */
+    right: 0px; /* Align it to the right edge of the sidebar */
+    height: 20px; /* Button height */
+    background-color: #344E41;
+    z-index: 1100; /* Ensure it is above other elements but below the hamburger icon */
+    transition: left 0.3s ease, width 0.3s ease; /* Smooth transition for sliding and resizing */
+    border: none; /* Remove any default borders */
+    width: 185px; /* Default width when expanded (matches sidebar width) */
+}
+
+/* Add the triangle using a pseudo-element */
+.toggle-sidebar-button::after {
+    content: '';
+    position: absolute;
+    top: 50%; /* Center the triangle vertically */
+    left: -20px; /* Position the triangle slightly outside the button */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 10px 10px; /* Create a triangle */
+    border-color: transparent #344E41 transparent transparent; /* Triangle color */
+    transition: transform 0.3s ease; /* Smooth transition for flipping */
+    z-index: 1200; /* Ensure the triangle is above other elements */
+}
+
+/* When the sidebar is collapsed */
+.sidebar.hidden {
+    transform: translateX(100%); /* Move the sidebar off-screen to the left */
+}
+
+.toggle-sidebar-button.hidden {
+    right: 0px; /* Move the button to the left side of the window */
+    width: 20px; /* Shrink the button to a small square */
+}
