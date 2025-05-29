@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'; // Import Link
 import '../styles/Sidebar.css'
 
 
+
 function Sidebar() {
-    const [isHidden, setIsHidden] = useState(false);
+    const [isHidden, setIsHidden] = useState(true);
 
     const toggleSidebar = () => {
         setIsHidden((prev) => !prev);
@@ -35,6 +37,11 @@ function Sidebar() {
                             <li><a href="#about">About</a></li>
                             <li><a href="#services">Services</a></li>
                             <li><a href="#contact">Contact</a></li>
+                            <li>
+                                <Link to="/article-create" onClick={() => setIsOpen(false)}>
+                                Create Article
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </nav>

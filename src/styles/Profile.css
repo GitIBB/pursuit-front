@@ -1,0 +1,45 @@
+.profile-container {
+    max-width: 600px;
+    max-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative; /* Establish a positioning context for children */
+    top: 180px;
+    margin-top: 10px; /* Adjust this value to match the navbar height */
+    margin: 50px auto; /* Center the profile on the page */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #303030;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-container h2 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+  
+  .profile-container p {
+    font-size: 16px;
+    color: #ffffff;
+    margin: 10px 0;
+  }
+  
+  .profile-container p span {
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .loading-message {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+  }

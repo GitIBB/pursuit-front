@@ -1,0 +1,58 @@
+import React, { useEffect, useState } from 'react';
+import '../styles/Profile.css'; // Import the CSS file
+import { apiRequest } from '../utils/auth.js'; // Import your API request utility
+
+const Profile = () => {
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        // Fetch user data from the /api/users endpoint - LATER, FETCH FROM /api/me
+        const response = await apiRequest(`${import.meta.env.VITE_API_BASE_URL}/api/users`, {
+          method: 'GET',
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch user data');
+        }
+
+        const data = await response.json();
+        console.log('User data:', data); // Debugging: Log the user data
+        setUser(data);
+      } catch (err) {
+        console.error('Error fetching user data:', err.message); // Debugging: Log the error
+        setError(err.message);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
+  if (error) {
+    return <p style={{ color: 'red' }}>{error}</p>;
+  }
+
+  if (!user) {
+    return <p>Loading...</p>;
+  }
+
+  // Format the CreatedAt date dynamically based on the user's locale
+  const formattedDate = new Date(user.CreatedAt).toLocaleDateString(undefined, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
+  return (
+    <div className="profile-container">
+      <h2>Profile</h2>
+      <p>Email: {user.Email}</p>
+      <p>Username: {user.Username}</p>
+      <p>Created At: {formattedDate}</p>
+    </div>
+  );
+};
+
+export default Profile;

@@ -1,0 +1,87 @@
+/* Style for the image upload container */
+.image-upload-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Style for the label */
+.image-upload-container label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+/* Style for the file input */
+.image-upload-container input[type="file"] {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #DAD7CD;
+    color: #666666;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+/* Style for the file input on focus */
+.image-upload-container input[type="file"]:focus {
+    border-color: #588157;
+    outline: none;
+}
+
+/* Style for the image preview container */
+.image-preview-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Wrapper for the image preview and remove button */
+.image-preview-wrapper {
+    position: relative;
+    display: inline-block;
+    overflow: visible;
+}
+
+/* Style for the image preview */
+.image-preview {
+    max-width: 250px; /* Limit the width */
+    max-height: 250px; /* Limit the height */
+    object-fit: cover; /* Maintain aspect ratio and crop if necessary */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the remove button */
+.remove-image-button {
+    all: unset; /* Reset all styles */
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    border: none;
+    top: 5px;
+    right: 5px;
+    width: 15px;
+    height: 15px;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 10px;
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    opacity: 0.8; /* Slightly transparent */
+    font-family: Arial, sans-serif; /* Ensure a simple font */
+}
+
+/* Hover effect for the remove button */
+.remove-image-button:hover {
+    background-color: #c9302c;
+}

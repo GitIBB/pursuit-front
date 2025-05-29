@@ -1,0 +1,35 @@
+.toolbar {
+    display: flex; /* Ensure the toolbar is a flex container */
+    flex-direction: row; /* Align buttons in a row */
+    justify-content: flex-start; /* Align buttons to the left */
+    align-items: center; /* Vertically center the buttons */
+    gap: 5px; /* Add spacing between buttons */
+    margin-bottom: 10px;
+  }
+  
+  .toolbar button {
+    padding: 4px 6px; /* Reduce padding for smaller buttons */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #7c7c7c;
+    cursor: pointer;
+    font-size: 12px; /* Reduce font size for smaller icons */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px; /* Set a fixed width for uniform button size */
+    height: 30px; /* Set a fixed height for uniform button size */
+  }
+  
+  .toolbar button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .toolbar button:active {
+    background-color: #d0d0d0;
+  }
+  
+  .toolbar button svg {
+    width: 16px; /* Set a small size for icons */
+    height: 16px;
+  }

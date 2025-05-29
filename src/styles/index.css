@@ -9,12 +9,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 body {
   margin: 0;
-  min-width: 320px;
-  min-height: 300vh;
+  min-width: 420px;
+  height: auto;
 }
 
 h1 {

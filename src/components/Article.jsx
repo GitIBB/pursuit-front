@@ -23,7 +23,7 @@ function Article() {
         const fetchArticle = async (id) => {
             try {
                 setLoading(true);
-                const response = await fetch(`/api/articles/${id}`); // Replace with your API endpoint
+                const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/articles/${id}`); // Replace with your API endpoint
                 if (!response.ok) {
                     throw new Error('Failed to fetch article');
                 }
@@ -46,7 +46,13 @@ function Article() {
     return (
         <div className="article">
             <h1>{article.title}</h1>
-            <p>{article.content}</p>
+            {article.image_url && (
+                <img src={`${import.meta.env.VITE_API_BASE_URL}${article.image_url}`}
+                alt={article.title}
+                className="article-image"
+                />
+            )}
+            <p>{article.body}</p>
         </div>
     );
 }
