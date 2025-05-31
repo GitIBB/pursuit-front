@@ -29,20 +29,39 @@ const NavBar = () => {
   }, []);
 
   useEffect(() => { // replace with a call to API /me at a later stage
-    const checkLoginStatus = () => {
-      const token = localStorage.getItem('auth-token');
-      setLoggedIn(!!token); // Update the login status based on the token
+    const checkLoginStatus = async () => {
+      try {
+        const response = await apiRequest(`${import.meta.env.VITE_API_BASE_URL}/api/me`, {
+          method: 'GET',
+        });
+  
+        setLoggedIn(response.ok); // Update the login status based on the response
+      } catch (err) {
+        console.error('Error checking login status:', err.message);
+        setLoggedIn(false);
+      }
     };
-
+  
     checkLoginStatus();
   }, []);
 
-  const handleLogout = () => { // replace with a call to API cookie-clearing /logout at a later stage
-    // Clear the token from localStorage
-    localStorage.removeItem('auth-token');
-    setLoggedIn(false);
-    setIsOpen(false);
-    window.location.href = '/login';
+  const handleLogout = async () => {
+    try {
+      const response = await apiRequest(`${import.meta.env.VITE_API_BASE_URL}/api/logout`, {
+        method: 'POST',
+        credentials: 'include', // Include cookies in the request
+      });
+  
+      if (response.ok) {
+        setLoggedIn(false);
+        setIsOpen(false);
+        window.location.href = '/login';
+      } else {
+        console.error('Logout failed');
+      }
+    } catch (err) {
+      console.error('Error during logout:', err.message);
+    }
   };
 
 

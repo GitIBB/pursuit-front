@@ -17,12 +17,8 @@ export const refreshAccessToken = async () => {
 };
 
 export const apiRequest = async (url, options = {}) => {
-  const token = localStorage.getItem('auth-token'); // Get the token from localStorage
-
   const defaultOptions = {
-    headers: {
-      'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
-    },
+    credentials: 'include', // Include cookies in the request
   };
 
   const mergedOptions = { ...defaultOptions, ...options };
@@ -30,7 +26,7 @@ export const apiRequest = async (url, options = {}) => {
   const response = await fetch(url, mergedOptions);
 
   if (response.status === 401) {
-    // If the token is invalid or expired, redirect to login
+    // If the session is invalid or expired, redirect to login
     window.location.href = '/login';
     return response;
   }

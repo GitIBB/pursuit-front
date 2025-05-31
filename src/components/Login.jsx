@@ -13,32 +13,27 @@ const Login = () => {
   
     // Validate email and password
     try {
-        // makes a POST request to the login endpoint
-        const response = await apiRequest(`${import.meta.env.VITE_API_BASE_URL}/api/login`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }),
-        });
-
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.message || 'Login failed'); // Use a fallback error message
-        }
-
-        const data = await response.json();
-
-        // Store the token in localStorage
-        localStorage.setItem('auth-token', data.token);
-
-        // Redirect to the main page
-        window.location.href = '/';
-      } catch (err) {
-        console.error('Error:', err.message); // Log the error
-        setError(err.message);
+      const response = await apiRequest(`${import.meta.env.VITE_API_BASE_URL}/api/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include', // Include cookies in the request
+        body: JSON.stringify({ email, password }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Login failed'); // Use a fallback error message
       }
-    };
+  
+      // Redirect to the main page after successful login
+      window.location.href = '/';
+    } catch (err) {
+      console.error('Error:', err.message); // Log the error
+      setError(err.message);
+    }
+  };
 
   return (
     <div className="login-container">

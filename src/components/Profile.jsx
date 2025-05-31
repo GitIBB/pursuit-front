@@ -9,8 +9,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        // Fetch user data from the /api/users endpoint - LATER, FETCH FROM /api/me
-        const response = await apiRequest(`${import.meta.env.VITE_API_BASE_URL}/api/users`, {
+        const response = await apiRequest(`${import.meta.env.VITE_API_BASE_URL}/api/me`, {
           method: 'GET',
         });
 
