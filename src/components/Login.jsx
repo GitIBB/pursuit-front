@@ -13,12 +13,11 @@ const Login = () => {
   
     // Validate email and password
     try {
-      const response = await apiRequest(`${import.meta.env.VITE_API_BASE_URL}/api/login`, {
+      const response = await apiRequest('/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: 'include', // Include cookies in the request
         body: JSON.stringify({ email, password }),
       });
   

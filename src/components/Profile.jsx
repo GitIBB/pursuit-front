@@ -9,7 +9,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await apiRequest(`${import.meta.env.VITE_API_BASE_URL}/api/me`, {
+        const response = await apiRequest('/api/me', {
           method: 'GET',
         });
 

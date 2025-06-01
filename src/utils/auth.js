@@ -16,24 +16,6 @@ export const refreshAccessToken = async () => {
   }
 };
 
-export const apiRequest = async (url, options = {}) => {
-  const defaultOptions = {
-    credentials: 'include', // Include cookies in the request
-  };
-
-  const mergedOptions = { ...defaultOptions, ...options };
-
-  const response = await fetch(url, mergedOptions);
-
-  if (response.status === 401) {
-    // If the session is invalid or expired, redirect to login
-    window.location.href = '/login';
-    return response;
-  }
-
-  return response;
-};
-
 export const isLoggedIn = async () => {
   try {
     const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/me`, {
@@ -45,4 +27,19 @@ export const isLoggedIn = async () => {
     console.error(err.message);
     return false; // Return false if the session is invalid
   }
+};
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+
+export const apiRequest = async (url, options = {}) => {
+  const defaultOptions = {
+    credentials: 'include',
+  };
+
+  const fullUrl = url.startsWith('http') ? url : `${API_BASE}${url}`;
+  const mergedOptions = { ...defaultOptions, ...options };
+  const response = await fetch(fullUrl, mergedOptions);
+
+  // Do NOT redirect here; let the caller handle 401s
+  return response;
 };

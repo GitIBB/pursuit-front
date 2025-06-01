@@ -6,9 +6,12 @@ import '../styles/ArticlePreview.css';
 import { apiRequest, isLoggedIn } from '../utils/auth';
 import ImageUpload from './ImageUpload'; // Import the ImageUpload component
 import { generateArticlePreview } from '../utils/generateArticlePreview';
+import { uploadImage } from '../utils/uploadImage';
 
 
 const ArticleCreate = () => {
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
   const [title, setTitle] = useState('');
   const [tags, setTags] = useState('');
   const [titleImage, setTitleImage] = useState(null);
@@ -48,30 +51,50 @@ const ArticleCreate = () => {
   };
 
 
-  const handleSubmit = async (e) => { // Handle form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess(false);
 
-    try { // Check if the user is logged in before submitting the article
-      if (!isLoggedIn()) {
+    try {
+      if (!await isLoggedIn()) {
         throw new Error('Not authenticated');
       }
 
-      const editorContent = textEditorRef.current.getContent();
+      // Upload images and get URLs (only if a file is selected)
+      const [titleImageUrl, introToBodyImageUrl, bodyToConclusionImageUrl] = await Promise.all([
+        uploadImage(titleImage),
+        uploadImage(introToBodyImage),
+        uploadImage(bodyToConclusionImage),
+      ]);
 
-      const formData = new FormData();
-      formData.append('title', title);
-      formData.append('tags', tags.split(',').map((tag) => tag.trim()));
-      formData.append('titleImage', titleImage);
-      formData.append('introToBodyImage', introToBodyImage);
-      formData.append('bodyToConclusionImage', bodyToConclusionImage);
-      formData.append('body', JSON.stringify(editorContent)); // Add editor content as JSON
+      // Get content from editor
+      const content = textEditorRef.current.getContent();
 
-      const response = await apiRequest(`${import.meta.env.VITE_API_BASE_URL}/api/articles`, {
+      // Build the body object
+      const body = {
+        headers: sectionHeaders,
+        content: content,
+        images: {
+          titleImage: titleImageUrl,
+          introToBodyImage: introToBodyImageUrl,
+          bodyToConclusionImage: bodyToConclusionImageUrl,
+        },
+      };
+
+      // Build the payload
+      const payload = {
+        title,
+        tags: tags.split(',').map((tag) => tag.trim()),
+        body,
+      };
+
+      const response = await apiRequest('/api/articles', {
         method: 'POST',
-        body: formData,
-        credentials: 'include', // Include cookies in the request
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
@@ -79,7 +102,7 @@ const ArticleCreate = () => {
       }
 
       setSuccess(true);
-      localStorage.removeItem('articleDraft'); // Clear local draft after successful submission
+      localStorage.removeItem('articleDraft');
       navigate('/articles');
     } catch (err) {
       setError(err.message);

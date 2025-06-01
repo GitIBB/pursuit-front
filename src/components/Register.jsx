@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Register.css'; // Import your CSS file for styling
+import { apiRequest } from '../utils/auth.js'; // Import your API request utility
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -16,7 +17,7 @@ const Register = () => {
     setSuccess(false);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/users`, {
+      const response = await apiRequest('/api/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

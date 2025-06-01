@@ -1,6 +1,9 @@
 import React, { useState, useRef } from 'react';
 import '../styles/ImageUpload.css';
 
+// Functional component for image upload with preview and removal functionality
+// This component allows users to upload an image, preview it, and remove it if needed.
+// Intended to be used in ArticleCreate, but will likely be reused in other components as well.
 const ImageUpload = ({ label, onImageSelect, previewAltText = 'Image Preview', accept = 'image/*' }) => {
   const [preview, setPreview] = useState(null);
   const fileInputRef = useRef(null); // Create a ref for the file input

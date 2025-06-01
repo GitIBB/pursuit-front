@@ -4,7 +4,7 @@ import logo from '../assets/logo.svg';
 import baseIcon from '../assets/profile-icon.svg'; // Import user icon
 import '../styles/Navbar.css';
 import '../styles/UserMenu.css'; // Import UserMenu-specific styles
-import { isLoggedIn } from '../utils/auth.js'; // Import the isLoggedIn function
+import { isLoggedIn, apiRequest } from '../utils/auth.js'; // Import the isLoggedIn function
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false); // State for user-menu
@@ -31,13 +31,14 @@ const NavBar = () => {
   useEffect(() => { // replace with a call to API /me at a later stage
     const checkLoginStatus = async () => {
       try {
-        const response = await apiRequest(`${import.meta.env.VITE_API_BASE_URL}/api/me`, {
-          method: 'GET',
-        });
-  
-        setLoggedIn(response.ok); // Update the login status based on the response
+        const response = await apiRequest('/api/me', { method: 'GET' });
+        if (response.status === 401) {
+          setLoggedIn(false);
+          // Optionally: navigate('/login');
+        } else {
+          setLoggedIn(response.ok);
+        }
       } catch (err) {
-        console.error('Error checking login status:', err.message);
         setLoggedIn(false);
       }
     };
@@ -47,7 +48,7 @@ const NavBar = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await apiRequest(`${import.meta.env.VITE_API_BASE_URL}/api/logout`, {
+      const response = await apiRequest('/api/logout', {
         method: 'POST',
         credentials: 'include', // Include cookies in the request
       });
