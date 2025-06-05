@@ -29,7 +29,7 @@ h1 {
 }
 
 .header-container {
-  position: relative; /* Creates a shared stacking context */
+  position: relative;
   z-index: 0; /* Default stacking context */
 }
 

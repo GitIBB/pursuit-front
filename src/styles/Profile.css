@@ -1,45 +1,61 @@
 .profile-container {
-    max-width: 600px;
-    max-height: 600px;
+    max-width: 900px;
+    min-height: 400px;
     display: flex;
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative; /* Establish a positioning context for children */
+    align-items: flex-start;
+    position: relative;
     top: 180px;
-    margin-top: 10px; /* Adjust this value to match the navbar height */
-    margin: 50px auto; /* Center the profile on the page */
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #303030;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+    margin: 0px auto;
+    gap: 40px; /* Space between articles and profile info */
+    padding: 24px 24px;
+}
+
+.user-info-container {
+  width: 320px;
+  min-height: 300px;
+  background: #333;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
   
-  .profile-container h2 {
-    text-align: center;
-    color: #ffffff;
-    margin-bottom: 20px;
-  }
-  
-  .profile-container p {
-    font-size: 16px;
-    color: #ffffff;
-    margin: 10px 0;
-  }
-  
-  .profile-container p span {
-    font-weight: bold;
-    color: #ffffff;
-  }
-  
-  .error-message {
-    color: red;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .loading-message {
-    text-align: center;
-    font-size: 18px;
-    color: #777;
-  }
+.profile-container h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.profile-container p {
+  font-size: 16px;
+  color: #ffffff;
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.loading-message {
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+}
+
+.user-articles-list {
+  width: 320px;
+  min-height: 300px;
+  background: #333;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}

@@ -1,15 +1,15 @@
 .register-container {
-    margin-top: 220px; /* Adjust this value to match the navbar height */
+    margin-top: 220px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-form {
+.register-form {
     width: 50%; /* Take up 50% of the page width */
-    max-width: 800px; /* Limit the maximum width */
-    min-width: 400px; /* Ensure it doesn't shrink too much */
+    max-width: 800px; 
+    min-width: 400px;
     align-items: center;
     padding-top: 20px;
     margin: 0 auto;
@@ -21,23 +21,23 @@ form {
     
 }
   
-form h2 {
+.register-form h2 {
     text-align: center;
 }
 
-form label {
+.register-form label {
     display: block;
     margin-bottom: 5px;
 }
   
-form input {
+.register-form input {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
   
-form button {
+.register-form button {
     width: 100%;
     margin-top: 20px;
     padding: 10px;
@@ -48,6 +48,6 @@ form button {
     cursor: pointer;
 }
   
-form button:hover {
+.register-form button:hover {
     background-color: #0056b3;
 }

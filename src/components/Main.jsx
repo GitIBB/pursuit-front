@@ -1,16 +1,34 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import '../styles/Main.css'
-import articles from '../data/articlesData' // REPLACE WITH DATA SOURCE
+import { fetchArticles } from '../utils/api.js';
 import Section from './Sections.jsx'
+
 
 function App() {
 
   // State to track the visible articles for each section
+  const [articles, setArticles] = useState([]); // Store fetched articles
+  const [loading, setLoading] = useState(true);
   const [visibleArticles, setVisibleArticles] = useState({
     upper: [0, 1, 2, 3], // indices of visible articles
     middle: [0, 1, 2, 3],
     bottom: [0, 1, 2, 3],
   });
+
+
+  useEffect(() => {
+    const loadArticles = async () => {
+      try {
+        let data = await fetchArticles(12, 0);
+        setArticles(data);
+      } catch (err) {
+        setArticles([]);
+      } finally {
+        setLoading(false); // <-- Set loading to false when done
+      }
+    };
+    loadArticles();
+  }, []);
 
   // Function to handle navigation
   const handleScroll = (section, direction) => {
@@ -31,27 +49,33 @@ function App() {
   return(
     <>
       <div className="grid-container">
-        <Section          
-          title="Upper Section"
-          articles={articles}
-          visibleArticles={visibleArticles.upper}
-          handleScroll={handleScroll}
-          section="upper"
-        />
-        <Section
-          title="Middle Section"
-          articles={articles}
-          visibleArticles={visibleArticles.middle}
-          handleScroll={handleScroll}
-          section="middle"
-        ></Section>
-        <Section
-          title="Lower Section"
-          articles={articles}
-          visibleArticles={visibleArticles.bottom}
-          handleScroll={handleScroll}
-          section="bottom"
+        <div className="section-wrapper">
+          <div className="section-title-badge">Category Placeholder</div>
+          <Section
+            articles={articles}
+            visibleArticles={visibleArticles.upper}
+            handleScroll={handleScroll}
+            section="upper"
           />
+        </div>
+        <div className="section-wrapper">
+          <div className="section-title-badge">Category Placeholder</div>
+          <Section
+            articles={articles}
+            visibleArticles={visibleArticles.middle}
+            handleScroll={handleScroll}
+            section="middle"
+          />
+        </div>
+        <div className="section-wrapper">
+          <div className="section-title-badge">Category Placeholder</div>
+          <Section
+            articles={articles}
+            visibleArticles={visibleArticles.bottom}
+            handleScroll={handleScroll}
+            section="bottom"
+          />
+        </div>
       </div>
     </>
   )

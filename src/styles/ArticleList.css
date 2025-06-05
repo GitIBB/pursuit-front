@@ -1,0 +1,24 @@
+.article-list-box {
+  width: 100%;
+  max-width: 350px;
+  padding: 0 0px;
+  border-radius: 8px;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.article-list-vertical {
+  max-width: 550px;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* space between previews */
+}
+
+.article-list-vertical li {
+  margin: 0;
+  padding: 0;
+}

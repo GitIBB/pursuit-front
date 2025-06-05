@@ -1,4 +1,3 @@
-import React from 'react';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { $getSelection, $isRangeSelection, FORMAT_TEXT_COMMAND } from 'lexical';
 import '../styles/ToolbarPlugin.css'; // Import your custom styles

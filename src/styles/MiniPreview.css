@@ -1,0 +1,58 @@
+.mini-preview {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 8px 8px;
+  background: #232323; 
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+.mini-preview-image {
+  width: auto;
+  height: auto;
+  max-width: 180px;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.mini-preview-info {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  flex: 1;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 5px;
+  text-align: left;
+}
+
+.mini-preview-title {
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.mini-preview-meta {
+  display: flex;
+  flex-direction: column; /* Stack author and date vertically */
+  font-size: 0.95em;
+  color: #bbb;
+  margin-top: 2px;
+}
+
+.mini-preview-author {
+  margin-right: 0;
+  margin-bottom: 2px;
+}
+
+.mini-preview-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: 0.3s ease;
+}
+.mini-preview-link:hover .mini-preview {
+  background: #282828;
+  cursor: pointer;
+  transition: 0.3s ease;
+}

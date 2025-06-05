@@ -1,0 +1,42 @@
+
+/* Style for the tabs */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Style for each tab button */
+.tabs button {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #7e7e7e;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Style for tab buttons on hover */
+.tabs button.active-tab {
+  background-color: #3A5A40;
+  color: white;
+  border-color: #588157;
+}
+
+/* Style for tab content */
+.tab-content {
+  margin-bottom: 20px;
+}
+
+/* Style for the editor input */
+.editor-input {
+  min-height: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  text-align: left !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}

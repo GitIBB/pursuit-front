@@ -1,107 +1,109 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/Archive.css';
+import { fetchArticles, fetchCategories } from '../utils/api.js';
 
 function Archive() {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All');
+    const [categories, setCategories] = useState(['All']);
     const [sortOption, setSortOption] = useState('Newest');
-    const [filteredArticles, setFilteredArticles] = useState([]); // Placeholder for articles
+    const [articles, setArticles] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    // Placeholder for categories (to be fetched from the database / expanded later)
-    const categories = ['All', 'Technology', 'Health', 'Science', 'Business'];
+    // Pagination state
+    const [page, setPage] = useState(1);
+    const pageSize = 10;
+    const sortOptions = ['Newest', 'Oldest'];
 
-    // Placeholder for sorting options, add more of these as needed
-    const sortOptions = ['Most Popular', 'Highest Rated', 'Newest', 'Oldest'];
+        // Fetch categories from backend
+    useEffect(() => {
+        fetchCategories()
+            .then(data => setCategories(['All', ...data.map(cat => cat.name)]))
+            .catch(() => setCategories(['All']));
+    }, []);
 
-    // Placeholder for articles (to be replaced with database data)
-    const articles = [
-        { id: 1, title: 'Article 1', author: 'Author A', category: 'Technology', date: '2025-05-01' },
-        { id: 2, title: 'Article 2', author: 'Author B', category: 'Health', date: '2025-04-15' },
-        // Add more dummy articles here
-    ];
+    useEffect(() => {
+        setLoading(true);
+        fetchArticles(pageSize, (page - 1) * pageSize)
+            .then(data => {
+                setArticles(data);
+                setLoading(false);
+            })
+            .catch(err => {
+                setError(err.message);
+                setLoading(false);
+            });
+    }, [page]);
 
-    // Handle search input
-    const handleSearch = (e) => {
-        setSearchQuery(e.target.value);
-    };
-
-    // Handle category selection
-    const handleCategoryChange = (e) => {
-        setSelectedCategory(e.target.value);
-    };
-
-    // Handle sorting option selection
-    const handleSortChange = (e) => {
-        setSortOption(e.target.value);
-    };
-
-    // Filter and sort articles (logic placeholder)
+    // Filter and sort articles
     const getFilteredArticles = () => {
         let filtered = articles;
 
-        // Filter by category
         if (selectedCategory !== 'All') {
-            filtered = filtered.filter((article) => article.category === selectedCategory);
+            filtered = filtered.filter(article => article.category === selectedCategory);
         }
 
-        // Filter by search query
         if (searchQuery) {
-            filtered = filtered.filter((article) =>
+            filtered = filtered.filter(article =>
                 article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                article.author.toLowerCase().includes(searchQuery.toLowerCase())
+                (article.username && article.username.toLowerCase().includes(searchQuery.toLowerCase()))
             );
         }
 
-        // Sort articles
         if (sortOption === 'Newest') {
-            filtered = filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+            filtered = filtered.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
         } else if (sortOption === 'Oldest') {
-            filtered = filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+            filtered = filtered.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
         }
 
         return filtered;
     };
 
+    // Pagination controls (client-side, since backend returns a page at a time)
+    // If your backend returns total count, you can use it for totalPages
+    // Here, we just show Next/Prev based on page number
     return (
-        <>
-            <div className="archive-container">
-                <h1>Archive</h1>
-                <div className="archive-controls-container">
-                    <div className="archive-controls">
-                        <input
-                            type="text"
-                            placeholder="Search by title or author..."
-                            value={searchQuery}
-                            onChange={handleSearch}
-                        />
-                        <select value={selectedCategory} onChange={handleCategoryChange}>
-                            {categories.map((category) => (
-                                <option key={category} value={category}>
-                                    {category}
-                                </option>
-                            ))}
-                        </select>
-                        <select value={sortOption} onChange={handleSortChange}>
-                            {sortOptions.map((option) => (
-                                <option key={option} value={option}>
-                                    {option}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                </div>
-                <div className="archive-articles">
-                    {getFilteredArticles().map((article) => (
-                        <div key={article.id} className="archive-article">
-                            <h2>{article.title}</h2>
-                            <p>By {article.author}</p>
-                            <p>Category: {article.category}</p>
-                            <p>Date: {article.date}</p>
-                        </div>
-                    ))}
+        <div className="archive-container">
+            <h1>Archive</h1>
+            <div className="archive-controls-container">
+                <div className="archive-controls">
+                    <input
+                        type="text"
+                        placeholder="Search by title or author..."
+                        value={searchQuery}
+                        onChange={e => setSearchQuery(e.target.value)}
+                    />
+                    <select value={selectedCategory} onChange={e => setSelectedCategory(e.target.value)}>
+                        {categories.map(category => (
+                            <option key={category} value={category}>{category}</option>
+                        ))}
+                    </select>
+                    <select value={sortOption} onChange={e => setSortOption(e.target.value)}>
+                        {sortOptions.map(option => (
+                            <option key={option} value={option}>{option}</option>
+                        ))}
+                    </select>
                 </div>
             </div>
-        </>
+            <div className="archive-articles">
+                {loading && <div>Loading...</div>}
+                {error && <div>Error: {error}</div>}
+                {!loading && !error && getFilteredArticles().map(article => (
+                    <div key={article.id} className="archive-article">
+                        <h2>{article.title}</h2>
+                        <p>By {article.username}</p>
+                        <p>Category: {article.category || 'Uncategorized'}</p>
+                        <p>Date: {new Date(article.created_at).toLocaleDateString()}</p>
+                    </div>
+                ))}
+            </div>
+            <div className="archive-pagination">
+                <button onClick={() => setPage(page => Math.max(1, page - 1))} disabled={page === 1}>Previous</button>
+                <span>Page {page}</span>
+                <button onClick={() => setPage(page => page + 1)} disabled={articles.length < pageSize}>Next</button>
+            </div>
+        </div>
     );
 }
 

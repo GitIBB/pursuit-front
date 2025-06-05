@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../styles/Profile.css'; // Import the CSS file
 import { apiRequest } from '../utils/auth.js'; // Import your API request utility
+import ArticleList from '../utils/ArticleList.jsx'; // Import the article list utility
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -36,7 +37,7 @@ const Profile = () => {
   if (!user) {
     return <p>Loading...</p>;
   }
-
+  console.log('user ID:', user.ID, user.id);
   // Format the CreatedAt date dynamically based on the user's locale
   const formattedDate = new Date(user.CreatedAt).toLocaleDateString(undefined, {
     year: 'numeric',
@@ -46,10 +47,19 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-      <h2>Profile</h2>
-      <p>Email: {user.Email}</p>
-      <p>Username: {user.Username}</p>
-      <p>Created At: {formattedDate}</p>
+      <div className="user-info-container">
+        <h2>Profile</h2>
+        <p>Email: {user.Email}</p>
+        <p>Username: {user.Username}</p>
+        <p>Created At: {formattedDate}</p>
+      </div>
+      <div className="user-articles-list">
+        <ArticleList
+          fetchUrl={`/api/users/${user.ID || user.id}/articles`}
+          emptyMessage="You haven't written any articles yet."
+        />
+        
+      </div>
     </div>
   );
 };

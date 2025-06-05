@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { useNavigate, Navigate } from 'react-router-dom';
 import TextEditor from '../utils/textEditor'; // Import the standalone editor
 import '../styles/ArticleCreate.css';
 import '../styles/ArticlePreview.css';
@@ -12,38 +12,60 @@ import { uploadImage } from '../utils/uploadImage';
 const ArticleCreate = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+
   const [title, setTitle] = useState('');
   const [tags, setTags] = useState('');
+
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [sectionHeaders, setSectionHeaders] = useState({
+  introduction: 'Introduction',
+  mainBody: 'Main Body',
+  conclusion: 'Conclusion',
+  });
+
   const [titleImage, setTitleImage] = useState(null);
   const [introToBodyImage, setIntroToBodyImage] = useState(null);
   const [bodyToConclusionImage, setBodyToConclusionImage] = useState(null);
+
   const textEditorRef = useRef(null);
-  const [sectionHeaders, setSectionHeaders] = useState({
-    introduction: 'Introduction',
-    mainBody: 'Main Body',
-    conclusion: 'Conclusion',
-  });
   const [editorContent, setEditorContent] = useState({
     introduction: '',
     mainBody: '',
     conclusion: '',
   });
+  
   const navigate = useNavigate();
+  const [authChecked, setAuthChecked] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {    // Check if the user is logged in before accessing article creation
-    if (!isLoggedIn()) {
-      navigate('/login'); // Redirect to login page if not logged in
-    }
-  }, [navigate]);
+    isLoggedIn().then(result => {
+      setLoggedIn(result);
+      setAuthChecked(true);
+    });
+  }, []);
 
-  const handleContentChange = () => {
+  useEffect(() => { // Fetch categories from the API when the component mounts
+  apiRequest('/api/categories')
+    .then(res => res.json())
+    .then(data => setCategories(data))
+    .catch(() => setCategories([]));
+  }, []);
+
+  if (!authChecked) return null; // Wait until authentication check is complete
+
+  if (!loggedIn) return <Navigate to="/login" replace />; // Redirect to login if not authenticated
+
+
+  const handleContentChange = () => { // This function will be called whenever the content in the text editor changes
     if (textEditorRef.current) {
       const updatedContent = textEditorRef.current.getContent();
       setEditorContent(updatedContent); // Dynamically update the editor content
     }
   };
 
-  const handleHeaderChange = (section, value) => {
+  const handleHeaderChange = (section, value) => { // This function updates the section headers dynamically
     setSectionHeaders((prevHeaders) => ({
       ...prevHeaders,
       [section]: value,
@@ -51,7 +73,7 @@ const ArticleCreate = () => {
   };
 
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => { // Handle the form submission for article creation
     e.preventDefault();
     setError('');
     setSuccess(false);
@@ -60,6 +82,11 @@ const ArticleCreate = () => {
       if (!await isLoggedIn()) {
         throw new Error('Not authenticated');
       }
+
+      if (!selectedCategory) {
+        throw new Error('Please select a category.');
+      }
+
 
       // Upload images and get URLs (only if a file is selected)
       const [titleImageUrl, introToBodyImageUrl, bodyToConclusionImageUrl] = await Promise.all([
@@ -81,15 +108,19 @@ const ArticleCreate = () => {
           bodyToConclusionImage: bodyToConclusionImageUrl,
         },
       };
-
+      
+      console.log('Selected category:', selectedCategory);
+      
       // Build the payload
       const payload = {
         title,
         tags: tags.split(',').map((tag) => tag.trim()),
-        body,
+        article_body: body,
+        image_url: titleImageUrl, // Use the title image URL as the main image
+        category_id: selectedCategory,
       };
 
-      const response = await apiRequest('/api/articles', {
+      const response = await apiRequest('/api/articles', { // Make the API request to create the article
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -97,13 +128,14 @@ const ArticleCreate = () => {
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
+      if (!response.ok) { // Check if the response is OK
         throw new Error('Failed to create article');
       }
 
-      setSuccess(true);
-      localStorage.removeItem('articleDraft');
-      navigate('/articles');
+    const data = await response.json(); // Parse the response data
+    setSuccess(true);
+    localStorage.removeItem('articleDraft'); // Clear the draft from local storage
+    navigate(`/article/${data.id}`); // Redirect to the newly created article page
     } catch (err) {
       setError(err.message);
     }
@@ -111,11 +143,10 @@ const ArticleCreate = () => {
 
   return (
     <div className="article-page-container">
-      <div className="article-create-container">
-          <TextEditor ref={textEditorRef} onContentChange={handleContentChange} />
+      <div className="article-side-form-container">
 
-        <form onSubmit={handleSubmit}>
-          <div>
+        <form onSubmit={handleSubmit} className="article-side-form">
+          <div className="form-group">
             <label htmlFor="title">Title:</label>
             <input
               type="text"
@@ -176,10 +207,22 @@ const ArticleCreate = () => {
             />
           </div>
 
+          <div className="form-group">
+            <label htmlFor="category">Category:</label>
+            <select
+              id="category"
+              value={selectedCategory}
+              onChange={e => setSelectedCategory(e.target.value)}
+              required
+            >
+              <option value="">Select a category</option>
+              {categories.map(cat => (
+                <option key={cat.id} value={cat.id}>{cat.name}</option>
+              ))}
+            </select>
+          </div>
 
-
-
-          <div>
+          <div className="form-group">
             <label htmlFor="tags">Tags (comma-separated):</label>
             <input
               type="text"
@@ -189,11 +232,19 @@ const ArticleCreate = () => {
             />
           </div>
 
+          
+          {error && <p className="error-message">{error}</p>}
+          {success && <p className="success-message">Article created successfully!</p>}
+
           <button type="submit">Create Article</button>
+
         </form>
         
       </div>
 
+      <div className="article-main-editor">
+        <TextEditor ref={textEditorRef} onContentChange={handleContentChange}/>
+      </div>
       <div className="article-preview-container">
         {generateArticlePreview({
           title,

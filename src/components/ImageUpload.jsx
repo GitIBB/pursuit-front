@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import '../styles/ImageUpload.css';
 
 // Functional component for image upload with preview and removal functionality

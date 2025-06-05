@@ -1,31 +1,6 @@
-const extractPlainText = (editorStateJSON) => {
-  try {
-    if (!editorStateJSON) {
-      return ''; // Fallback for empty or undefined JSON
-    }
+import extractPlainText from '../utils/extractPlainText';
 
-    const editorState = JSON.parse(editorStateJSON);
-    const root = editorState.root;
-
-    // Traverse the root node and extract text from all child nodes
-    const extractText = (node) => {
-      if (node.type === 'text') {
-        return node.text || '';
-      }
-      if (node.children) {
-        return node.children.map(extractText).join(' ');
-      }
-      return '';
-    };
-
-    return extractText(root);
-  } catch (error) {
-    console.error('Failed to parse editor state:', error);
-    return ''; // Fallback for invalid JSON
-  }
-};
-
-const generateArticlePreview = ({ title, titleImage, introToBodyImage, bodyToConclusionImage, editorContent, sectionHeaders }) => {
+export default function generateArticlePreview ({ title, titleImage, introToBodyImage, bodyToConclusionImage, editorContent, sectionHeaders }) {
   const introductionText = extractPlainText(editorContent.introduction);
   const mainBodyText = extractPlainText(editorContent.mainBody);
   const conclusionText = extractPlainText(editorContent.conclusion);

@@ -45,7 +45,7 @@ const Register = () => {
 
   return (
     <div className="register-container">
-      <form onSubmit={handleRegister}>
+      <form onSubmit={handleRegister} className="register-form">
         <h2>Register</h2>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         {success && <p style={{ color: 'green' }}>Registration successful! Redirecting to profile page...</p>}

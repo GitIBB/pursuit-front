@@ -1,8 +1,7 @@
 export const refreshAccessToken = async () => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/refresh`, {
+    const response = await apiRequest('/api/refresh', {
       method: 'POST',
-      credentials: 'include', // Include cookies in the request
     });
 
     if (!response.ok) {
@@ -18,7 +17,7 @@ export const refreshAccessToken = async () => {
 
 export const isLoggedIn = async () => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/me`, {
+    const response = await apiRequest('/api/me', {
       method: 'GET',
     });
 

@@ -1,19 +1,20 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import '../styles/Article.css';
-import { apiRequest } from '../utils/auth';
+import { apiRequest } from '../utils/auth.js';
+import LexicalViewer from '../utils/textViewer'; // Adjust the import path as necessary
 
 function Article() {
+    const { id } = useParams();
     const location = useLocation();
-    const [article, setArticle] = useState(null);
+    const [article, setArticle] = useState(null);6
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "https://localhost:8080";
 
-    const queryParams = new URLSearchParams(location.search);
-    const articleID = queryParams.get('id');
 
     useEffect(() => {
-        if (!articleID) {
+        if (!id) {
             setError('Article ID is missing');
             setLoading(false);
             return;
@@ -35,8 +36,8 @@ function Article() {
             }
         };
 
-        fetchArticle(articleID);
-    }, [articleID]);
+        fetchArticle(id);
+    }, [id]);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
@@ -48,35 +49,34 @@ function Article() {
     return (
         <div className="article">
             <h1>{article.title}</h1>
-            {/* Main/title image */}
-            {article.image_url && (
-                <img
-                    src={article.image_url}
-                    alt={article.title}
-                    className="article-image"
-                />
-            )}
 
             {/* Introduction Section */}
-            {headers.introduction && <h2>{headers.introduction}</h2>}
+            
             {images.titleImage && (
-                <img src={images.titleImage} alt="Title Section" className="article-section-image" />
+                <img src={`${BACKEND_URL}${images.titleImage}`} alt="Title Section" className="article-section-image" />
             )}
-            {content.introduction && <p>{content.introduction}</p>}
+            {headers.introduction && <h2>{headers.introduction}</h2>}
+            {content.introduction && (
+            <LexicalViewer initialJson={content.introduction} />
+            )}
 
             {/* Main Body Section */}
             {headers.mainBody && <h2>{headers.mainBody}</h2>}
             {images.introToBodyImage && (
-                <img src={images.introToBodyImage} alt="Intro to Body" className="article-section-image" />
+                <img src={`${BACKEND_URL}${images.introToBodyImage}`} alt="Intro to Body" className="article-section-image" />
             )}
-            {content.mainBody && <p>{content.mainBody}</p>}
+            {content.mainBody && (
+            <LexicalViewer initialJson={content.mainBody} />
+            )}
 
             {/* Conclusion Section */}
             {headers.conclusion && <h2>{headers.conclusion}</h2>}
             {images.bodyToConclusionImage && (
-                <img src={images.bodyToConclusionImage} alt="Body to Conclusion" className="article-section-image" />
+                <img src={`${BACKEND_URL}${images.bodyToConclusionImage}`} alt="Body to Conclusion" className="article-section-image" />
             )}
-            {content.conclusion && <p>{content.conclusion}</p>}
+            {content.conclusion && (
+            <LexicalViewer initialJson={content.conclusion} />
+            )}
 
             {/* Tags */}
             {article.tags && article.tags.length > 0 && (

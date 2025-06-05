@@ -15,11 +15,37 @@
   align-items: center;
   height: auto;
   background-color: #414141;
-  padding: 20px;
+  padding: 10px;
   border-radius: 12px;
+  border-top-left-radius: 0;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
   width: 100%;
   z-index: 101;
+}
+
+.section-wrapper {
+  position: relative;
+  margin-top: 32px;
+}
+
+.section-title-badge {
+  position: absolute;
+  top: -33px;
+  left: 0px;
+  background: #3A5A40;
+  color: #fff;
+  border-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 6px 22px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  z-index: 10;
+  min-width: 120px;
+  text-align: center;
+  font-family: Lato, sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 0.15em;
 }

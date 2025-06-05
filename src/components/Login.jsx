@@ -36,7 +36,7 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogin} className="login-form">
         <h2>Login</h2>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <div>

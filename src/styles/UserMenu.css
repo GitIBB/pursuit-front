@@ -19,7 +19,7 @@
   border: 2px solid transparent;
   transition: border-color 0.2s ease;
   image-rendering: auto; /* Default rendering */
-  border-radius: 50%; /* Adjusted for a more subtle effect */
+  border-radius: 50%;  /* Make it circular */
   border-color: #ffffff; /* Default border color */
   background-color: #ffffff; /* Default background color */
 }

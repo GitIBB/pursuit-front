@@ -1,26 +1,43 @@
+/* main container for article creation and preview page */
 .article-page-container {
-  max-width: 1600px;
+  max-width: 1800px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   align-items: flex-start;
   position: relative;
   top: 180px;
-  gap: 20px;
-  max-width: 1200px;
+  gap: 30px;
   margin: 50px auto;
+  box-sizing: border-box;
 }
 
-.article-create-container {
-  flex: 2;
+/* Main editor section */
+
+.article-main-editor {
+  flex: 1 1 35%;
   display: flex;
   flex-direction: column;
-  background-color: #303030;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-width: 200px;
+  max-width: 800px;
+  background: #303030;
+  padding: 24px 18px;
+  flex: 2 1 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-sizing: border-box;
 }
 
+
+/* end of main editor section */
+
+
+
+/* article preview container section */
+
 .article-preview-container {
+  flex: 0 0 25%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,133 +48,146 @@
   background-color: #9e9e9e;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transform: scale(0.9); /* Scale the entire preview down to 90% */
-  transform-origin: top center; /* Scale from the top center */
-  transition: transform 0.3s ease; /* Smooth scaling transition */
+  transform-origin: top center;
+  transition: transform 0.3s ease;
 }
 
-.article-create-container h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-size: 24px;
-  color: #000000;
+/* end of article preview container section */
+
+
+/* Side form section */
+
+.article-side-form-container {
+  flex: 1 1 260px;
+  min-width: 260px;
+  max-width: 400px;
+  background: #303030;
+  padding: 24px 18px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-sizing: border-box;
 }
 
-.article-create-container form {
+.article-side-form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 14px;
+  box-sizing: border-box;
+}
+
+/* --- Unified Field Group --- */
+.form-group,
+.section-headers-container,
+.image-upload-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 6px;
+  margin-bottom: 18px;
 }
 
-.article-create-container form div {
-  display: flex;
-  flex-direction: column;
-}
-
-.article-create-container form label {
-  font-weight: bold;
-  margin-bottom: 8px;
+/* --- Unified Label Style --- */
+.article-side-form label,
+.section-headers-container label,
+.image-upload-container label {
+  font-weight: 500;
   font-size: 14px;
   color: #ffffff;
+  margin-bottom: 2px;
 }
 
-.article-create-container form input,
-.article-create-container form textarea,
-.article-create-container form .editor-input {
+/* --- Unified Input/Select Style --- */
+.article-side-form input,
+.article-side-form select,
+.section-headers-container input,
+.image-upload-container input[type="file"],
+.article-side-form textarea {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
   background-color: #DAD7CD;
   color: #666666;
   transition: border-color 0.3s ease;
+  box-sizing: border-box;
 }
 
-.article-create-container form input:focus,
-.article-create-container form textarea:focus,
-.article-create-container form .editor-input:focus {
+.article-side-form input:focus,
+.article-side-form select:focus,
+.section-headers-container input:focus,
+.image-upload-container input[type="file"]:focus,
+.article-side-form textarea:focus {
   border-color: #588157;
   outline: none;
 }
 
-.article-create-container form textarea {
-  resize: vertical;
-  min-height: 120px;
+/* --- Image Preview Consistency --- */
+.image-preview {
+  max-width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  margin-top: 6px;
 }
 
-.article-create-container form .editor-placeholder {
-  color: #aaa;
+/* --- Remove Button for Image --- */
+.remove-image-button {
+  all: unset;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  color: #000;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+  opacity: 0.85;
+}
+.remove-image-button:hover {
+  background: #c9302c;
+  color: #fff;
+}
+
+/* --- Error/Success Messages --- */
+.error-message {
+  color: #e74c3c;
   font-size: 14px;
-  padding: 10px;
+  margin-top: 10px;
+  text-align: left;
+}
+.success-message {
+  color: #2ecc71;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: left;
 }
 
-.article-create-container form > button {
+/* --- Submit Button --- */
+.article-side-form > button {
+  width: 70%;
   padding: 12px 20px;
   background-color: #3A5A40;
-  color: #ffffff;
+  color: #fff;
   border: none;
   border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
+  margin: 30px auto 0 auto;
   transition: background-color 0.3s ease;
 }
-
-.article-create-container form > button:hover {
+.article-side-form > button:hover {
   background-color: #588157;
 }
-
-.article-create-container form > button:disabled {
+.article-side-form > button:disabled {
   background-color: #ffffff;
   cursor: not-allowed;
-}
-
-.article-create-container p {
-  text-align: left;
-  font-size: 14px;
-  margin-top: 10px;
-}
-
-.article-create-container p[style*="color: red"] {
-  color: #e74c3c;
-}
-
-.article-create-container p[style*="color: green"] {
-  color: #2ecc71;
-}
-
-.tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.tabs button {
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #7e7e7e;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.tabs button.active-tab {
-  background-color: #3A5A40;
-  color: white;
-  border-color: #588157;
-}
-
-.tab-content {
-  margin-bottom: 20px;
-}
-
-.editor-input {
-  min-height: 200px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-  color: #333;
-  text-align: left !important;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
 }

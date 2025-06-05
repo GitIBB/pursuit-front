@@ -1,8 +1,8 @@
 /* Hamburger Icon */
 .hamburger-icon {
     position: fixed;
-    top: 90px; /* Position it at the top of the navbar */
-    right: 30px; /* Align it to the right */
+    top: 90px; 
+    right: 30px;
     background: none;
     border: none;
     cursor: pointer;
@@ -18,7 +18,7 @@
     display: block;
     width: 100%;
     height: 3px;
-    background-color: #ffffff; /* Adjust color as needed */
+    background-color: #ffffff;
     transition: all 0.3s ease;
 }
 
@@ -27,11 +27,11 @@
     flex-direction: column; 
     background-color: #303030; 
     height: calc(100vh - 140px); /* Adjust height to fit below the header */
-    width: 150px; /* Set a fixed width for the sidebar */
-    position: fixed; /* Fix the sidebar to the left side of the screen */
-    top: 140px; /* Start below the header */
-    right: 0; /* Align to the left edge of the screen */
-    z-index: 998; /* Higher than the gray line */
+    width: 150px; 
+    position: fixed; 
+    top: 140px; 
+    right: 0; /* Align to the right edge of the screen */
+    z-index: 998; 
     transform: translateX(0); /* Default position */
     border-left: 10px solid #faedcd;
     border-top: none;
@@ -59,14 +59,14 @@
 /* Decorative toggle-sidebar-button */
 .toggle-sidebar-button {
     position: fixed;
-    top: 140px; /* Align it below the header */
-    right: 0px; /* Align it to the right edge of the sidebar */
-    height: 20px; /* Button height */
+    top: 140px; 
+    right: 0px; 
+    height: 20px; 
     background-color: #344E41;
     z-index: 1100; /* Ensure it is above other elements but below the hamburger icon */
     transition: left 0.3s ease, width 0.3s ease; /* Smooth transition for sliding and resizing */
-    border: none; /* Remove any default borders */
-    width: 185px; /* Default width when expanded (matches sidebar width) */
+    border: none;
+    width: 185px; 
 }
 
 /* Add the triangle using a pseudo-element */
@@ -79,10 +79,10 @@
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 10px 10px 10px 10px; /* Create a triangle */
-    border-color: transparent #344E41 transparent transparent; /* Triangle color */
-    transition: transform 0.3s ease; /* Smooth transition for flipping */
-    z-index: 1200; /* Ensure the triangle is above other elements */
+    border-width: 10px 10px 10px 10px; 
+    border-color: transparent #344E41 transparent transparent; 
+    transition: transform 0.3s ease;
+    z-index: 1200; 
 }
 
 /* When the sidebar is collapsed */
@@ -91,6 +91,6 @@
 }
 
 .toggle-sidebar-button.hidden {
-    right: 0px; /* Move the button to the left side of the window */
+    right: 0px;
     width: 20px; /* Shrink the button to a small square */
 }
