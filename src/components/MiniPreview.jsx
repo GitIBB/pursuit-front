@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../styles/MiniPreview.css'; // Import your CSS styles for the mini preview
+import '../styles/MiniPreview.css';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "https://localhost:8080";
 

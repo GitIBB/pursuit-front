@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import '../styles/Article.css';
 import { apiRequest } from '../utils/auth.js';
-import LexicalViewer from '../utils/textViewer'; // Adjust the import path as necessary
+import LexicalViewer from '../utils/textViewer'; 
 
 function Article() {
     const { id } = useParams();

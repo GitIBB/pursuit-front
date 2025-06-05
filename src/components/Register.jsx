@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Register.css'; // Import your CSS file for styling
-import { apiRequest } from '../utils/auth.js'; // Import your API request utility
+import '../styles/Register.css'; 
+import { apiRequest } from '../utils/auth.js';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -9,7 +9,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
-  const navigate = useNavigate(); // Use useNavigate for programmatic navigation
+  const navigate = useNavigate(); 
 
   const handleRegister = async (e) => { // Handle form submission
     e.preventDefault();
@@ -29,11 +29,13 @@ const Register = () => {
         throw new Error('Registration failed'); 
       }
 
+
+      // Remove this, outdated with the new API fetching functions
       // Extract token from the response
-      const { token } = await response.json();
+      // const { token } = await response.json();
 
       // Store the token in local storage or a state management library
-      localStorage.setItem('auth_token', token);
+      // localStorage.setItem('auth_token', token);
 
       setSuccess(true);
 

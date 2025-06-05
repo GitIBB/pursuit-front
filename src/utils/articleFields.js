@@ -4,7 +4,7 @@ export function getArticleFields(article) {
   return {
     id: article.id,
     title: article.title,
-    author: article.username, // or article.user_id if you want the ID
+    author: article.username,
     date: article.created_at,
     category: article.category || FALLBACK_CATEGORY,
   };

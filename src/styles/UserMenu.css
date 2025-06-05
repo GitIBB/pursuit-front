@@ -26,8 +26,7 @@
 
 .user-icon:hover {
   border-color: #ffffff; /* Change border color on hover */
-  background-color: #000000; /* Change background color on hover */
-  border-radius: 50%;
+  background-color: #000000; 
   border: 2px solid transparent;
 }
 

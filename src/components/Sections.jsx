@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../styles/Sections.css'
-import extractPlainText from '../utils/extractPlainText'; // Adjust the import path as needed
-import { getArticleFields } from '../utils/articleFields'; // Adjust the import path as needed
+import extractPlainText from '../utils/extractPlainText';
+import { getArticleFields } from '../utils/articleFields'; 
 
 
 function Section({ sectionTitle, articles, visibleArticles, handleScroll, section }) {
@@ -55,7 +55,7 @@ function Section({ sectionTitle, articles, visibleArticles, handleScroll, sectio
                         })}
                       </p>
                     </div>
-                    {/* You can add more fields here if needed */}
+                    {/* Can add more fields here if needed */}
                     <p className="article-preview-text">
                       {/* Show a preview of the content if available */}
                       {article.body?.content?.introduction

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../styles/Login.css'; // Import your CSS file for styling
-import { apiRequest } from '../utils/auth.js'; // Import your API request utility
+import '../styles/Login.css';
+import { apiRequest } from '../utils/auth.js';
 
 const Login = () => {
   const [email, setEmail] = useState('');

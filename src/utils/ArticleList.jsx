@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { apiRequest } from './auth';
 import MiniPreview from '../components/MiniPreview';
-import '../styles/ArticleList.css'; // Import the CSS file for styling
+import '../styles/ArticleList.css';
 
 const ArticleList = ({ fetchUrl, emptyMessage = "No articles found." }) => {
   const [articles, setArticles] = useState([]);

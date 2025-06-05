@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import '../styles/Profile.css'; // Import the CSS file
-import { apiRequest } from '../utils/auth.js'; // Import your API request utility
-import ArticleList from '../utils/ArticleList.jsx'; // Import the article list utility
+import '../styles/Profile.css'; 
+import { apiRequest } from '../utils/auth.js'; 
+import ArticleList from '../utils/ArticleList.jsx'; 
 
 const Profile = () => {
   const [user, setUser] = useState(null);

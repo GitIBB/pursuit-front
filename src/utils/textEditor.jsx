@@ -5,7 +5,7 @@ import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
-import '../styles/TextEditor.css'; // Import your CSS styles for the editor
+import '../styles/TextEditor.css'; 
 
 const INITIAL_EDITOR_STATES = {
   Introduction: JSON.stringify({

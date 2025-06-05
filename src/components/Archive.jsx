@@ -60,9 +60,6 @@ function Archive() {
         return filtered;
     };
 
-    // Pagination controls (client-side, since backend returns a page at a time)
-    // If your backend returns total count, you can use it for totalPages
-    // Here, we just show Next/Prev based on page number
     return (
         <div className="archive-container">
             <h1>Archive</h1>

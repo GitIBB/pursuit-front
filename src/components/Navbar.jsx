@@ -28,7 +28,7 @@ const NavBar = () => {
     };
   }, []);
 
-  useEffect(() => { // replace with a call to API /me at a later stage
+  useEffect(() => { 
     const checkLoginStatus = async () => {
       try {
         const response = await apiRequest('/api/me', { method: 'GET' });
