@@ -1,0 +1,131 @@
+.post-container {
+  width: 100%;
+  display: flex;
+  background: #282828;
+  border-radius: 6px;
+  border-radius: 1px;
+  border: solid #3A5A40;
+  box-sizing: border-box;
+}
+
+.post-meta {
+  box-sizing: content-box;
+  background: #333;
+  max-width: 15%;
+  
+}
+
+.meta-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #aaa;
+  margin: 0.5rem;
+  flex-direction: column;
+}
+
+.post-content-container {
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-width: 0px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-direction: row;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.post-date {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+button.post-replies-button {
+  justify-content: flex-end;
+  background: #3A5A40;
+  border: none;
+  color: #cfcfcf;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.post-author {
+  font-weight: 600;
+  color: #fff;
+}
+.post-content {
+  margin: 0.5rem 1rem;
+  line-height: 1.4;
+  color: #ddd;
+}
+
+.meta-name {
+  display: flex;
+  justify-content: center;
+}
+
+.meta-role,
+.meta-signup {
+  align-items: flex-start;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-width: 0px;
+  height: 40px;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+  background: #222;
+  margin-top: 0.5rem;
+  color: #aaa;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+
+.post-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  width: 100%;
+  min-width: 0px;
+}
+
+button.reply-button {
+  background: #3A5A40;
+  border: none;
+  color: #cfcfcf;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 0.3rem;
+  border-radius: 4px;
+}
+
+button.post-rate-button {
+  background: #3A5A40;
+  border: none;
+  color: #cfcfcf;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button.post-reference-button {
+  background: #3A5A40;
+  border: none;
+  color: #cfcfcf;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}

@@ -34,7 +34,7 @@
 
 .mini-preview-meta {
   display: flex;
-  flex-direction: column; /* Stack author and date vertically */
+  flex-direction: column;
   font-size: 0.95em;
   color: #bbb;
   margin-top: 2px;

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Register.css'; 
-import { apiRequest } from '../utils/auth.js';
+import { apiRequest, isLoggedIn } from '../utils/auth.js';
 
 const Register = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -11,7 +12,16 @@ const Register = () => {
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate(); 
 
-  const handleRegister = async (e) => { // Handle form submission
+  useEffect(() => {
+    isLoggedIn().then(result => {
+      setIsAuthenticated(result);
+      if (result) {
+        navigate('/profile');
+      }
+    });
+  }, [navigate]);
+
+  const handleRegister = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess(false);
@@ -22,24 +32,27 @@ const Register = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, username, password }), // Send user data to the server
+        body: JSON.stringify({ email, username, password }),
       });
 
-      if (!response.ok) {  // Check if the response is OK
+      if (!response.ok) {
         throw new Error('Registration failed'); 
       }
 
-
-      // Remove this, outdated with the new API fetching functions
-      // Extract token from the response
-      // const { token } = await response.json();
-
-      // Store the token in local storage or a state management library
-      // localStorage.setItem('auth_token', token);
-
       setSuccess(true);
 
-      navigate('/profile'); // Redirect to the profile page after successful registration
+      const loginResponse = await apiRequest('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!loginResponse.ok) {
+        throw new Error('Registration succeeded, but login failed');
+      }
+
+
+      navigate('/profile');
     } catch (err) {
       setError(err.message);
     }

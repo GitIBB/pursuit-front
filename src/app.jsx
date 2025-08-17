@@ -11,6 +11,11 @@ import Register from './components/Register.jsx';
 import Login from './components/Login.jsx';
 import Profile from './components/Profile.jsx';
 import ArticleCreate from './components/ArticleCreate.jsx';
+import ForumCreate from './components/ForumCreate.jsx';
+import ForumMenu from './components/ForumMenu';
+import Forum from './components/Forum.jsx';
+import ThreadCreate from './components/ThreadCreate.jsx';
+import Thread from './components/Thread.jsx';
 
 
 const root = createRoot(document.getElementById('root'));
@@ -32,6 +37,11 @@ root.render(
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/article-create" element={<ArticleCreate />} />
+            <Route path="/forum-create" element={<ForumCreate />} />
+            <Route path="/forums" element={<ForumMenu />} />
+            <Route path="/forums/:forumID" element={<Forum />} />
+            <Route path="/forums/:forumID/new-thread" element={<ThreadCreate />} />
+            <Route path="/forums/:forumID/threads/:threadID" element={<Thread />} />
           </Routes>
         </main>
       </div>

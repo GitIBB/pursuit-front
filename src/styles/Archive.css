@@ -34,9 +34,9 @@
 .archive-articles {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: repeat(auto-fit, minmax(200px, max-content)); /* Responsive grid */
-    gap: 25px; /* Reduce the gap between articles */
-    justify-content: start; /* Align articles to the left */
+    grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+    gap: 25px;
+    justify-content: start;
     padding: 0 20px; 
     background-color: #222222;
     border-radius: 6px;

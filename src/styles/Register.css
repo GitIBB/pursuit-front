@@ -7,7 +7,7 @@
 }
 
 .register-form {
-    width: 50%; /* Take up 50% of the page width */
+    width: 50%;
     max-width: 800px; 
     min-width: 400px;
     align-items: center;
@@ -17,8 +17,7 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #414141;
-    padding-top: calc(var(--navbar-height) + 60px); /* Add extra space below the navbar */
-    
+    padding-top: calc(var(--navbar-height) + 60px);
 }
   
 .register-form h2 {

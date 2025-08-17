@@ -1,8 +1,8 @@
 import extractPlainText from './extractPlainText.jsx';
 
-// Extracts body text from an article object
+// extracts body text from an article object
 /**
- * Extracts the introduction, main body, and conclusion text from an article object.
+ * extracts the introduction, main body, and conclusion text from an article object.
  * @param {Object} article - The article object containing body content.
  * @returns {Object} An object containing the introduction, main body, and conclusion text.
  * does not preserve formatting, only plain text.

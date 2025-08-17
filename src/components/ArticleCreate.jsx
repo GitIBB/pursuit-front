@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
-import TextEditor from '../utils/textEditor'; // Import the standalone editor
+import TextEditorArticles from '../utils/textEditorArticles';
 import '../styles/ArticleCreate.css';
 import '../styles/ArticlePreview.css';
 import { apiRequest, isLoggedIn } from '../utils/auth';
-import ImageUpload from './ImageUpload'; // Import the ImageUpload component
+import ImageUpload from './ImageUpload';
 import { generateArticlePreview } from '../utils/generateArticlePreview';
 import { uploadImage } from '../utils/uploadImage';
 
@@ -39,33 +39,33 @@ const ArticleCreate = () => {
   const [authChecked, setAuthChecked] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
 
-  useEffect(() => {    // Check if the user is logged in before accessing article creation
+  useEffect(() => {    
     isLoggedIn().then(result => {
       setLoggedIn(result);
       setAuthChecked(true);
     });
   }, []);
 
-  useEffect(() => { // Fetch categories from the API when the component mounts
+  useEffect(() => { // fetch categs
   apiRequest('/api/categories')
     .then(res => res.json())
     .then(data => setCategories(data))
     .catch(() => setCategories([]));
   }, []);
 
-  if (!authChecked) return null; // Wait until authentication check is complete
+  if (!authChecked) return null;
 
-  if (!loggedIn) return <Navigate to="/login" replace />; // Redirect to login if not authenticated
+  if (!loggedIn) return <Navigate to="/login" replace />;
 
 
-  const handleContentChange = () => { // This function will be called whenever the content in the text editor changes
+  const handleContentChange = () => {
     if (textEditorRef.current) {
       const updatedContent = textEditorRef.current.getContent();
-      setEditorContent(updatedContent); // Dynamically update the editor content
+      setEditorContent(updatedContent); // dynamic update
     }
   };
 
-  const handleHeaderChange = (section, value) => { // This function updates the section headers dynamically
+  const handleHeaderChange = (section, value) => {
     setSectionHeaders((prevHeaders) => ({
       ...prevHeaders,
       [section]: value,
@@ -73,7 +73,7 @@ const ArticleCreate = () => {
   };
 
 
-  const handleSubmit = async (e) => { // Handle the form submission for article creation
+  const handleSubmit = async (e) => { 
     e.preventDefault();
     setError('');
     setSuccess(false);
@@ -87,18 +87,14 @@ const ArticleCreate = () => {
         throw new Error('Please select a category.');
       }
 
-
-      // Upload images and get URLs (only if a file is selected)
+      // upload img / geturl (if file selected)
       const [titleImageUrl, introToBodyImageUrl, bodyToConclusionImageUrl] = await Promise.all([
         uploadImage(titleImage),
         uploadImage(introToBodyImage),
         uploadImage(bodyToConclusionImage),
       ]);
 
-      // Get content from editor
       const content = textEditorRef.current.getContent();
-
-      // Build the body object
       const body = {
         headers: sectionHeaders,
         content: content,
@@ -111,16 +107,15 @@ const ArticleCreate = () => {
       
       console.log('Selected category:', selectedCategory);
       
-      // Build the payload
       const payload = {
         title,
         tags: tags.split(',').map((tag) => tag.trim()),
         article_body: body,
-        image_url: titleImageUrl, // Use the title image URL as the main image
+        image_url: titleImageUrl,
         category_id: selectedCategory,
       };
 
-      const response = await apiRequest('/api/articles', { // Make the API request to create the article
+      const response = await apiRequest('/api/articles', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -128,14 +123,13 @@ const ArticleCreate = () => {
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) { // Check if the response is OK
+      if (!response.ok) {
         throw new Error('Failed to create article');
       }
 
-    const data = await response.json(); // Parse the response data
+    const data = await response.json();
     setSuccess(true);
-    localStorage.removeItem('articleDraft'); // Clear the draft from local storage
-    navigate(`/article/${data.id}`); // Redirect to the newly created article page
+    navigate(`/article/${data.id}`); // redirect
     } catch (err) {
       setError(err.message);
     }
@@ -243,7 +237,7 @@ const ArticleCreate = () => {
       </div>
 
       <div className="article-main-editor">
-        <TextEditor ref={textEditorRef} onContentChange={handleContentChange}/>
+        <TextEditorArticles ref={textEditorRef} onContentChange={handleContentChange}/>
       </div>
       <div className="article-preview-container">
         {generateArticlePreview({

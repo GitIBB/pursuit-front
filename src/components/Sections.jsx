@@ -55,9 +55,9 @@ function Section({ sectionTitle, articles, visibleArticles, handleScroll, sectio
                         })}
                       </p>
                     </div>
-                    {/* Can add more fields here if needed */}
+                    {/* can add more fields here if needed */}
                     <p className="article-preview-text">
-                      {/* Show a preview of the content if available */}
+                      {/* show a preview of the content if available */}
                       {article.body?.content?.introduction
                         ? extractPlainText(article.body.content.introduction)
                         : ''}

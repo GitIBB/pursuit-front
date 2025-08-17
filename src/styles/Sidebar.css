@@ -1,4 +1,3 @@
-/* Hamburger Icon */
 .hamburger-icon {
     position: fixed;
     top: 90px; 
@@ -6,7 +5,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    z-index: 1300; /* Ensure it is above the sidebar and navbar */
+    z-index: 1300;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -26,17 +25,17 @@
     display: flex; 
     flex-direction: column; 
     background-color: #303030; 
-    height: calc(100vh - 140px); /* Adjust height to fit below the header */
+    height: calc(100vh - 140px);
     width: 150px; 
     position: fixed; 
     top: 140px; 
-    right: 0; /* Align to the right edge of the screen */
+    right: 0;
     z-index: 998; 
-    transform: translateX(0); /* Default position */
+    transform: translateX(0);
     border-left: 10px solid #faedcd;
     border-top: none;
     border-bottom: none;
-    transition: transform 0.3s ease; /* Smooth transition */
+    transition: transform 0.3s ease;
 }
 
 .sidebar-nav {
@@ -56,26 +55,24 @@
     letter-spacing: 0.1em;
 }
 
-/* Decorative toggle-sidebar-button */
 .toggle-sidebar-button {
     position: fixed;
     top: 140px; 
     right: 0px; 
     height: 20px; 
     background-color: #344E41;
-    z-index: 1100; /* Ensure it is above other elements but below the hamburger icon */
-    transition: left 0.3s ease, width 0.3s ease; /* Smooth transition for sliding and resizing */
+    z-index: 1100;
+    transition: left 0.3s ease, width 0.3s ease;
     border: none;
     width: 185px; 
 }
 
-/* Add the triangle using a pseudo-element */
 .toggle-sidebar-button::after {
     content: '';
     position: absolute;
-    top: 50%; /* Center the triangle vertically */
-    left: -20px; /* Position the triangle slightly outside the button */
-    transform: translateY(-50%); /* Adjust for vertical centering */
+    top: 50%;
+    left: -19px;
+    transform: translateY(-50%);
     width: 0;
     height: 0;
     border-style: solid;
@@ -85,12 +82,11 @@
     z-index: 1200; 
 }
 
-/* When the sidebar is collapsed */
 .sidebar.hidden {
-    transform: translateX(100%); /* Move the sidebar off-screen to the left */
+    transform: translateX(100%);
 }
 
 .toggle-sidebar-button.hidden {
     right: 0px;
-    width: 20px; /* Shrink the button to a small square */
+    width: 20px;
 }

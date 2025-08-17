@@ -2,18 +2,18 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start; 
-    align-items: center; /* Vertically center the buttons */
+    align-items: center;
     gap: 5px; 
     margin-bottom: 10px;
   }
   
   .toolbar button {
-    padding: 4px 6px; /* Reduce padding for smaller buttons */
+    padding: 4px 6px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #7c7c7c;
     cursor: pointer;
-    font-size: 12px; /* Reduce font size for smaller icons */
+    font-size: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,6 +30,6 @@
   }
   
   .toolbar button svg {
-    width: 16px; /* Set a small size for icons */
+    width: 16px;
     height: 16px;
   }

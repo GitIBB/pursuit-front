@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'; // Import Link
+import { Link } from 'react-router-dom';
 import '../styles/Sidebar.css'
 
 
@@ -24,21 +24,19 @@ function Sidebar() {
             </button>
 
             <div className="sidebar-button-container">
-                {/* Decorative toggle-sidebar-button */}
+                {/* decorative toggle-sidebar-button thing */}
                 <div
                     className={`toggle-sidebar-button ${isHidden ? 'hidden' : ''}`}
-                    aria-hidden="true" // Mark as non-interactive
+                    aria-hidden="true" // mark as non-interactive
                 ></div>
             </div>
             <aside className="sidebar-container">
                 <nav className={`sidebar ${isHidden ? 'hidden' : ''}`}>
                     <div className="sidebar-nav">
                         <ul>
-                            <a>
-                                <Link to="/article-create" onClick={() => setIsOpen(false)}>
-                                Create Article
-                                </Link>
-                            </a>
+                            <Link to="/article-create" onClick={() => setIsOpen(false)}>
+                            Create Article
+                            </Link>
                         </ul>
                     </div>
                 </nav>

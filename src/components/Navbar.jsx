@@ -1,30 +1,30 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom'; // Import Link
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo.svg';
-import baseIcon from '../assets/profile-icon.svg'; // Import user icon
+import baseIcon from '../assets/profile-icon.svg';
 import '../styles/Navbar.css';
-import '../styles/UserMenu.css'; // Import UserMenu-specific styles
-import { isLoggedIn, apiRequest } from '../utils/auth.js'; // Import the isLoggedIn function
+import '../styles/UserMenu.css';
+import { isLoggedIn, apiRequest } from '../utils/auth.js'; // login currently unused, fix later
 
 const NavBar = () => {
-  const [isOpen, setIsOpen] = useState(false); // State for user-menu
-  const [loggedIn, setLoggedIn] = useState(false); // State for user login status
-  const menuRef = useRef(null); // Ref for the user menu container
+  const [isOpen, setIsOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const menuRef = useRef(null); 
 
   const toggleUserMenu = () => {
-    setIsOpen((prev) => !prev); // Toggle user menu
+    setIsOpen((prev) => !prev);
   };
 
   const handleClickOutside = (event) => {
     if (menuRef.current && !menuRef.current.contains(event.target)) {
-      setIsOpen(false); // Close the menu if the click is outside
+      setIsOpen(false);
     }
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside); // Add event listener
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside); // Cleanup event listener
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -34,7 +34,7 @@ const NavBar = () => {
         const response = await apiRequest('/api/me', { method: 'GET' });
         if (response.status === 401) {
           setLoggedIn(false);
-          // Optionally: navigate('/login');
+          // optionally: navigate('/login');
         } else {
           setLoggedIn(response.ok);
         }
@@ -50,7 +50,7 @@ const NavBar = () => {
     try {
       const response = await apiRequest('/api/logout', {
         method: 'POST',
-        credentials: 'include', // Include cookies in the request
+        credentials: 'include',
       });
   
       if (response.ok) {
@@ -68,30 +68,34 @@ const NavBar = () => {
 
   return (
     <>
-      {/* Navbar */}
+      {/* nav */}
       <header className="navbar-container">
         <nav className="header-navbar">
-          {/* Logo Section */}
+          {/* Llogo */}
           <div className="logo-container">
             <Link to="/">
               <img src={logo} alt="logo" className="nav-logo" />
             </Link>
           </div>
 
-          {/* Navigation Links */}
+          {/* navlinks */}
           <div className="nav-links">
             <Link to="/">Home</Link>
+            <Link to="/forums">
+              Forums
+            </Link>
             <Link to="/archive" className="archive-button">
               Archive
             </Link>
+
           </div>
           <div className="header-divider"></div>
         </nav>
       </header>
 
-      {/* User Menu */}
+      {/* usrmenu */}
       <div className="user-menu-container" ref={menuRef}>
-        {/* Register Button */}
+        {/* register */}
         {!loggedIn && (
           <Link to="/register" className="register-button">
             Register

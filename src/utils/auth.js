@@ -8,10 +8,10 @@ export const refreshAccessToken = async () => {
       throw new Error('Failed to refresh access token');
     }
 
-    return true; // Indicate that the token was successfully refreshed
+    return true;
   } catch (err) {
     console.error(err.message);
-    return false; // Indicate that the token refresh failed
+    return false;
   }
 };
 
@@ -21,10 +21,10 @@ export const isLoggedIn = async () => {
       method: 'GET',
     });
 
-    return response.ok; // Return true if the session is valid
+    return response.ok;
   } catch (err) {
     console.error(err.message);
-    return false; // Return false if the session is invalid
+    return false;
   }
 };
 
@@ -39,6 +39,6 @@ export const apiRequest = async (url, options = {}) => {
   const mergedOptions = { ...defaultOptions, ...options };
   const response = await fetch(fullUrl, mergedOptions);
 
-  // Do NOT redirect here; let the caller handle 401s
+  // do NOT redirect here; let the caller handle 401s
   return response;
 };

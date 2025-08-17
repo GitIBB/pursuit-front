@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { apiRequest } from './auth';
-import MiniPreview from '../components/MiniPreview';
+import { apiRequest } from '../utils/auth';
+import MiniPreview from './MiniPreview';
 import '../styles/ArticleList.css';
 
 const ArticleList = ({ fetchUrl, emptyMessage = "No articles found." }) => {
@@ -26,7 +26,9 @@ const ArticleList = ({ fetchUrl, emptyMessage = "No articles found." }) => {
 
   if (loading) return <div className="article-list-box">Loading articles...</div>;
   if (error) return <div className="article-list-box error-message">{error}</div>;
-  if (!articles.length) return <div className="article-list-box">{emptyMessage}</div>;
+  if (!articles || articles.length === 0) {
+     return <div className="article-list-box">{emptyMessage}</div>;
+  }
 
   return (
     <div className="article-list-box">

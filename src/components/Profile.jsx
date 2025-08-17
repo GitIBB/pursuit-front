@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import '../styles/Profile.css'; 
 import { apiRequest } from '../utils/auth.js'; 
-import ArticleList from '../utils/ArticleList.jsx'; 
+import ArticleList from './ArticleList.jsx';
+import { dateFormatter } from '../utils/miscTools.js';
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -19,10 +20,8 @@ const Profile = () => {
         }
 
         const data = await response.json();
-        console.log('User data:', data); // Debugging: Log the user data
         setUser(data);
       } catch (err) {
-        console.error('Error fetching user data:', err.message); // Debugging: Log the error
         setError(err.message);
       }
     };
@@ -37,8 +36,6 @@ const Profile = () => {
   if (!user) {
     return <p>Loading...</p>;
   }
-  console.log('user ID:', user.ID, user.id);
-  // Format the CreatedAt date dynamically based on the user's locale
   const formattedDate = new Date(user.CreatedAt).toLocaleDateString(undefined, {
     year: 'numeric',
     month: 'long',
@@ -51,7 +48,7 @@ const Profile = () => {
         <h2>Profile</h2>
         <p>Email: {user.Email}</p>
         <p>Username: {user.Username}</p>
-        <p>Created At: {formattedDate}</p>
+        <p>Account created: {user?.CreatedAt ? dateFormatter(user.CreatedAt) : 'N/A'}</p>
       </div>
       <div className="user-articles-list">
         <ArticleList

@@ -36,9 +36,6 @@
     border-style: solid;
 }
 
-
-/* Article Preview Styles */
-
 .article-preview-content {
     padding: 0px 0; 
     margin-top: 10px; 
@@ -92,9 +89,9 @@
 }
 
 .article-preview-author-label {
-  color: #888;
-  font-weight: normal;
-  margin-right: 4px;
+    color: #888;
+    font-weight: normal;
+    margin-right: 4px;
 }
 
 .article-preview-date {
@@ -152,10 +149,6 @@
     color: #ffffff;
     line-height: 1.5;
 }
-
-
-/* End of Article Preview Styles */
-
 
 .nav-button {
     background-color: #2E4A34; 

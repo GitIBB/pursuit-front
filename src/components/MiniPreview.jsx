@@ -13,7 +13,6 @@ const MiniPreview = ({ article }) => {
       image = article.ImageUrl.String;
     }
 
-  // Format date if available
   let formattedDate = '';
   if (createdAt) {
     formattedDate = new Date(createdAt).toLocaleDateString(undefined, {

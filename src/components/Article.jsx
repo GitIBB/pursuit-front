@@ -43,14 +43,14 @@ function Article() {
     if (error) return <div>Error: {error}</div>;
     if (!article) return <div>Article not found</div>;
 
-    // Destructure body for easier access
+    // destructure
     const { headers = {}, content = {}, images = {} } = article.body || {};
 
     return (
         <div className="article">
             <h1>{article.title}</h1>
 
-            {/* Introduction Section */}
+            {/* intro */}
             
             {images.titleImage && (
                 <img src={`${BACKEND_URL}${images.titleImage}`} alt="Title Section" className="article-section-image" />
@@ -60,7 +60,7 @@ function Article() {
             <LexicalViewer initialJson={content.introduction} />
             )}
 
-            {/* Main Body Section */}
+            {/* main */}
             {headers.mainBody && <h2>{headers.mainBody}</h2>}
             {images.introToBodyImage && (
                 <img src={`${BACKEND_URL}${images.introToBodyImage}`} alt="Intro to Body" className="article-section-image" />
@@ -69,7 +69,7 @@ function Article() {
             <LexicalViewer initialJson={content.mainBody} />
             )}
 
-            {/* Conclusion Section */}
+            {/* conc */}
             {headers.conclusion && <h2>{headers.conclusion}</h2>}
             {images.bodyToConclusionImage && (
                 <img src={`${BACKEND_URL}${images.bodyToConclusionImage}`} alt="Body to Conclusion" className="article-section-image" />
@@ -78,7 +78,7 @@ function Article() {
             <LexicalViewer initialJson={content.conclusion} />
             )}
 
-            {/* Tags */}
+            {/* tag*/}
             {article.tags && article.tags.length > 0 && (
                 <div className="article-tags">
                     {article.tags.map((tag, idx) => (

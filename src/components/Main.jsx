@@ -6,8 +6,7 @@ import Section from './Sections.jsx'
 
 function App() {
 
-  // State to track the visible articles for each section
-  const [articles, setArticles] = useState([]); // Store fetched articles
+  const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [visibleArticles, setVisibleArticles] = useState({
     upper: [0, 1, 2, 3], // indices of visible articles
@@ -24,13 +23,12 @@ function App() {
       } catch (err) {
         setArticles([]);
       } finally {
-        setLoading(false); // <-- Set loading to false when done
+        setLoading(false);
       }
     };
     loadArticles();
   }, []);
 
-  // Function to handle navigation
   const handleScroll = (section, direction) => {
     setVisibleArticles((prev) => {
       const current = prev[section];

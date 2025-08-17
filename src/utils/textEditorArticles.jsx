@@ -43,7 +43,7 @@ const INITIAL_EDITOR_STATES = {
   }),
 };
 
-const TextEditor = forwardRef(({ onContentChange }, ref) => {
+const TextEditorArticles = forwardRef(({ onContentChange }, ref) => {
   const [activeTab, setActiveTab] = useState('Introduction');
   const [tabStates, setTabStates] = useState(INITIAL_EDITOR_STATES);
   const editorRef = useRef(null);
@@ -55,7 +55,7 @@ const TextEditor = forwardRef(({ onContentChange }, ref) => {
     },
   };
 
-  // Restore content when the active tab changes
+  // restore content when the active tab changes
   useEffect(() => {
     if (editorRef.current) {
       const content = tabStates[activeTab];
@@ -157,7 +157,7 @@ const TextEditor = forwardRef(({ onContentChange }, ref) => {
             contentEditable={
               <ContentEditable
                 className="editor-input"
-                onInput={handleInput} // Trigger onInput for dynamic updates
+                onInput={handleInput}
               />
             }
             placeholder={
@@ -184,4 +184,4 @@ const TextEditor = forwardRef(({ onContentChange }, ref) => {
   );
 });
 
-export default TextEditor;
+export default TextEditorArticles;

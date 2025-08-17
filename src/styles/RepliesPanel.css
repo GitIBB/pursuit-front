@@ -1,0 +1,106 @@
+.replies-panel {
+    display: flex;
+    flex-direction: column;
+    background: #232323;
+    width: 100%;
+    height: 100%;
+    color: #eee;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.replies-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.replies-tabs button {
+  background: #333;
+  color: #eee;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.replies-tabs button.active {
+  background: #3A5A40;
+  border: solid #588157;
+  color: #fff;
+}
+
+.replies-list {
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    overflow-y: auto;
+}
+
+.replies-list button {
+  flex: 1 1 180px; /* grow, shrink, min width */
+  max-width: 300px;
+  min-width: 120px;
+  min-height: 50px;
+  background: #292929;
+  color: #ddd;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  margin-bottom: 0;
+  cursor: pointer;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.replies-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.replies-pagination button {
+  background: #333;
+  color: #eee;
+  border: none;
+  border-radius: 4px;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+}
+
+.replies-pagination button:disabled {
+  background: #444;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.1rem;
+  margin-top: 1rem;
+}
+
+.pagination-controls button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #3A5A40;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.pagination-controls button.active {
+  background-color: #588157;
+  font-weight: bold;
+}

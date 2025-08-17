@@ -1,4 +1,3 @@
-/* article container */
 .article {
   background-color: #202020;
   border-left: 20px solid #303030;
@@ -11,7 +10,6 @@
   margin-top: 180px;
 }
 
-/* article title */
 .article h1 {
   font-size: 4rem;
   font-weight: bold;
@@ -20,7 +18,6 @@
   text-align: center;
 }
 
-/* section headers */
 .article h2 {
   text-align: center;
   font-size: 1.2rem;
@@ -30,7 +27,6 @@
   margin-bottom: 12px;
 }
 
-/* paragraph */
 .article p {
   font-size: 1rem;
   line-height: 1.7;
@@ -38,7 +34,6 @@
   margin-bottom: 16px;
 }
 
-/* article images */
 .article-image,
 .article-section-image {
   display: block;
@@ -50,7 +45,6 @@
   object-fit: cover;
 }
 
-/* article tags */
 .article-tags {
   margin-top: 18px;
   text-align: center;

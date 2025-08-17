@@ -1,31 +1,31 @@
 .user-menu-container {
-  position: fixed; /* Position relative to the viewport */
-  top: 20px; /* Position at the top-right corner */
+  position: fixed;
+  top: 20px;
   right: 28px;
   display: flex;
   align-items: center;
   gap: 1rem;
-  z-index: 1500; /* Ensure it appears above the sidebar */
+  z-index: 1500;
 }
 
 .user-menu {
-  position: relative; /* Establish a positioning context for the dropdown */
+  position: relative;
 }
 
 .user-icon {
   width: 40px;
-  aspect-ratio: 1/ 1; /* Maintain a 1:1 aspect ratio */
+  aspect-ratio: 1/ 1;
   cursor: pointer;
   border: 2px solid transparent;
   transition: border-color 0.2s ease;
-  image-rendering: auto; /* Default rendering */
-  border-radius: 50%;  /* Make it circular */
-  border-color: #ffffff; /* Default border color */
-  background-color: #ffffff; /* Default background color */
+  image-rendering: auto;
+  border-radius: 50%;
+  border-color: #ffffff;
+  background-color: #ffffff;
 }
 
 .user-icon:hover {
-  border-color: #ffffff; /* Change border color on hover */
+  border-color: #ffffff;
   background-color: #000000; 
   border: 2px solid transparent;
 }
@@ -33,7 +33,7 @@
 .dropdown-menu {
   position: absolute;
   width: 100px;
-  top: 30px; /* Position below the user icon */
+  top: 30px;
   right: 0;
   background-color: white;
   border: 1px solid #ddd;
@@ -41,7 +41,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   list-style: none;
   padding: 0.5rem 0;
-  z-index: 1501; /* Ensure it appears above the sidebar */
+  z-index: 1501;
 }
 
 .dropdown-menu li {

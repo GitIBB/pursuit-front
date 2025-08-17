@@ -1,12 +1,9 @@
-
-/* Style for the tabs */
 .tabs {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-/* Style for each tab button */
 .tabs button {
   padding: 10px 20px;
   border: 1px solid #ccc;
@@ -16,21 +13,19 @@
   font-size: 14px;
 }
 
-/* Style for tab buttons on hover */
 .tabs button.active-tab {
   background-color: #3A5A40;
   color: white;
   border-color: #588157;
 }
 
-/* Style for tab content */
 .tab-content {
   margin-bottom: 20px;
 }
 
-/* Style for the editor input */
 .editor-input {
   min-height: 200px;
+  min-width: 200px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;

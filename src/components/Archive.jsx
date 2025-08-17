@@ -11,12 +11,12 @@ function Archive() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Pagination state
+    // pagination
     const [page, setPage] = useState(1);
     const pageSize = 10;
     const sortOptions = ['Newest', 'Oldest'];
 
-        // Fetch categories from backend
+    // fet categs
     useEffect(() => {
         fetchCategories()
             .then(data => setCategories(['All', ...data.map(cat => cat.name)]))
@@ -36,7 +36,7 @@ function Archive() {
             });
     }, [page]);
 
-    // Filter and sort articles
+    // article filtering
     const getFilteredArticles = () => {
         let filtered = articles;
 

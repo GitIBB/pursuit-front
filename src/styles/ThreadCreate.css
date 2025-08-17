@@ -1,0 +1,94 @@
+.thread-create-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5%;
+    min-height: 60vh;
+    background: transparent;
+    min-height: 100vh;
+    top: 100px;
+    position: relative;
+}
+
+
+.thread-create-form {
+    background: #303030;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(52, 78, 65, 0.08);
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem 2.5rem 1.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.thread-create-form input[type="text"] {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 1px solid #3A5A40;
+    border-radius: 6px;
+    background: #282828;
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.thread-create-form input[type="text"]:focus {
+    outline: none;
+    border-color: #588157;
+    background: #232323;
+}
+
+.thread-create-form .error {
+    color: #ff6b6b;
+    background: #2d1a1a;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+.thread-create-form button[type="submit"] {
+    background: #3A5A40;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.7rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-end;
+}
+
+.thread-create-form button[type="submit"]:hover {
+    background: #588157;
+}
+
+.thread-post-editor {
+    width: 800px;
+    max-width: 100%;
+    min-width: 320px;
+    background: #303030;
+    padding: 24px 18px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.editor-input {
+    width: 100%;
+    min-height: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    text-align: left !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    resize: vertical;
+}

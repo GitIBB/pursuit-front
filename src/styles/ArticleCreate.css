@@ -1,4 +1,3 @@
-/* main container for article creation and preview page */
 .article-page-container {
   max-width: 1800px;
   display: flex;
@@ -10,8 +9,6 @@
   margin: 50px auto;
   box-sizing: border-box;
 }
-
-/* Main editor section */
 
 .article-main-editor {
   flex: 1 1 35%;
@@ -29,13 +26,6 @@
   box-sizing: border-box;
 }
 
-
-/* end of main editor section */
-
-
-
-/* article preview container section */
-
 .article-preview-container {
   flex: 0 0 25%;
   display: flex;
@@ -47,15 +37,10 @@
   border-radius: 8px;
   background-color: #9e9e9e;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transform: scale(0.9); /* Scale the entire preview down to 90% */
+  transform: scale(0.9);
   transform-origin: top center;
   transition: transform 0.3s ease;
 }
-
-/* end of article preview container section */
-
-
-/* Side form section */
 
 .article-side-form-container {
   flex: 1 1 260px;
@@ -76,7 +61,6 @@
   box-sizing: border-box;
 }
 
-/* --- Unified Field Group --- */
 .form-group,
 .section-headers-container,
 .image-upload-container {
@@ -86,7 +70,6 @@
   margin-bottom: 18px;
 }
 
-/* --- Unified Label Style --- */
 .article-side-form label,
 .section-headers-container label,
 .image-upload-container label {
@@ -96,7 +79,6 @@
   margin-bottom: 2px;
 }
 
-/* --- Unified Input/Select Style --- */
 .article-side-form input,
 .article-side-form select,
 .section-headers-container input,
@@ -122,7 +104,6 @@
   outline: none;
 }
 
-/* --- Image Preview Consistency --- */
 .image-preview {
   max-width: 100%;
   max-height: 180px;
@@ -133,7 +114,6 @@
   margin-top: 6px;
 }
 
-/* --- Remove Button for Image --- */
 .remove-image-button {
   all: unset;
   position: absolute;
@@ -157,7 +137,6 @@
   color: #fff;
 }
 
-/* --- Error/Success Messages --- */
 .error-message {
   color: #e74c3c;
   font-size: 14px;
@@ -171,7 +150,6 @@
   text-align: left;
 }
 
-/* --- Submit Button --- */
 .article-side-form > button {
   width: 70%;
   padding: 12px 20px;

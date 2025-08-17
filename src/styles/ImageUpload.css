@@ -1,5 +1,3 @@
-/* Only keep unique styles for preview and remove button */
-
 .image-preview-container {
     display: flex;
     justify-content: center;

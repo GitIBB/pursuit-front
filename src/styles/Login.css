@@ -1,5 +1,5 @@
 .login-container {
-    margin-top: 220px; /* Adjust this value to match the navbar height */
+    margin-top: 220px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #414141; 
-    padding-top: calc(var(--navbar-height) + 60px); /* Add extra space below the navbar */
+    padding-top: calc(var(--navbar-height) + 60px);
 }
 
 .login-form h2 {
@@ -58,6 +58,6 @@
 .login-form p {
     margin-top: 10px;
     font-size: 14px;
-    color: red; /* For error messages */
+    color: red;
     text-align: center;
 }

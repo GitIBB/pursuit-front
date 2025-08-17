@@ -3,11 +3,11 @@
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 1000; /* Ensure it appears above other elements */
+    z-index: 1000;
 }
 
 .logo-container {
-    position: relative; /* Establish a positioning context for children */
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,20 +31,19 @@
     display: flex;
     position: fixed;
     top: 0;
-    z-index: 1000; /* Ensure it appears above other elements */
+    z-index: 1000;
 }
 
 .header-divider {
     position: fixed; 
-    top: 140px; /* Align it below the header */
+    top: 140px;
     width: 100%;
     height: 10px;
     left: 0;
     background-color: #faedcd;
-    z-index: 997; /* Positioning */
+    z-index: 997;
 }
 
-/* Register Button */
 .register-button {
     background-color: none;
     color: white;
@@ -85,6 +84,10 @@
     text-decoration: none;
     color: #ffffff;
     font-size: 1rem;
+}
+
+.nav-links a:visited {
+    color: #ffffff;
 }
 
 .nav-links a:hover {

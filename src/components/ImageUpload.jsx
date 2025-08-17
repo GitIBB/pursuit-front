@@ -1,26 +1,26 @@
 import { useState, useRef } from 'react';
 import '../styles/ImageUpload.css';
 
-// Functional component for image upload with preview and removal functionality
-// This component allows users to upload an image, preview it, and remove it if needed.
-// Intended to be used in ArticleCreate, but will likely be reused in other components as well.
+// functional component for image upload with preview and removal functionality
+// this component allows users to upload an image, preview it, and remove it if needed.
+// intended to be used in ArticleCreate, but will likely be reused in other components as well.
 const ImageUpload = ({ label, onImageSelect, previewAltText = 'Image Preview', accept = 'image/*' }) => {
   const [preview, setPreview] = useState(null);
-  const fileInputRef = useRef(null); // Create a ref for the file input
+  const fileInputRef = useRef(null);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setPreview(URL.createObjectURL(file)); // Generate a preview URL
-      onImageSelect(file); // Pass the selected file to the parent component
+      setPreview(URL.createObjectURL(file));
+      onImageSelect(file); 
     }
   };
 
   const handleRemoveImage = () => {
-    setPreview(null); // Clear the preview
-    onImageSelect(null); // Reset the selected file in the parent component
+    setPreview(null);
+    onImageSelect(null); 
     if (fileInputRef.current) {
-      fileInputRef.current.value = ''; // Reset the file input field
+      fileInputRef.current.value = '';
     }
   };
 
@@ -31,7 +31,7 @@ const ImageUpload = ({ label, onImageSelect, previewAltText = 'Image Preview', a
         type="file"
         accept={accept}
         onChange={handleImageChange}
-        ref={fileInputRef} // Attach the ref to the file input
+        ref={fileInputRef}
       />
       {preview && (
         <div className="image-preview-container">

@@ -8,10 +8,9 @@ const Login = () => {
   const [error, setError] = useState('');
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
     setError('');
   
-    // Validate email and password
     try {
       const response = await apiRequest('/api/login', {
         method: 'POST',
@@ -23,13 +22,12 @@ const Login = () => {
   
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || 'Login failed'); // Use a fallback error message
+        throw new Error(errorData.message || 'Login failed');
       }
   
       // Redirect to the main page after successful login
       window.location.href = '/';
     } catch (err) {
-      console.error('Error:', err.message); // Log the error
       setError(err.message);
     }
   };
